@@ -1,0 +1,2 @@
+DEFAULT_FILE atom phaseDetector_studentVersion.vhd
+DEFAULT_ARCHITECTURE atom studentVersion

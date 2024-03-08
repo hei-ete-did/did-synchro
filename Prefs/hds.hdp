@@ -1,0 +1,66 @@
+[Concat]
+Board = $HDS_PROJECT_DIR/../Board/concat
+sequential = $HEI_LIBS_DIR/sequential/concat
+[ModelSim]
+Board = $SCRATCH_DIR/$DESIGN_NAME/Board
+Common = $SCRATCH_DIR/Libraries/Common
+Common_test = $SCRATCH_DIR/Libraries/Common_test
+gates = $SCRATCH_DIR/Libraries/gates
+GeneratorControl = $SCRATCH_DIR/$DESIGN_NAME/GeneratorControl
+GeneratorControl_test = $SCRATCH_DIR/$DESIGN_NAME/GeneratorControl_test
+io = $SCRATCH_DIR/Libraries/IO
+Lattice = $SCRATCH_DIR/Libraries/Lattice/work
+Memory = $SCRATCH_DIR/Libraries/Memory
+Memory_test = $SCRATCH_DIR/Libraries/Memory_test
+Operators = $SCRATCH_DIR/Libraries/Operators
+Operators_test = $SCRATCH_DIR/Libraries/Operators_test
+RS232 = $SCRATCH_DIR/Libraries/RS232
+RS232_test = $SCRATCH_DIR/Libraries/RS232_test
+sequential = $SCRATCH_DIR/Libraries/sequential
+[hdl]
+Board = $HDS_PROJECT_DIR/../Board/hdl
+Common = $HEI_LIBS_DIR/Common/hdl
+Common_test = $HEI_LIBS_DIR/Common_test/hdl
+gates = $HEI_LIBS_DIR/Gates/hdl
+GeneratorControl = $HDS_PROJECT_DIR/../GeneratorControl/hdl
+GeneratorControl_test = $HDS_PROJECT_DIR/../GeneratorControl_test/hdl
+ieee = $HDS_HOME/hdl_libs/ieee/hdl
+io = $HEI_LIBS_DIR/IO/hdl
+Lattice = $HEI_LIBS_DIR/Lattice/hdl
+Memory = $HEI_LIBS_DIR/Memory/hdl
+Memory_test = $HEI_LIBS_DIR/Memory_test/hdl
+Operators = $HEI_LIBS_DIR/Operators/hdl
+Operators_test = $HEI_LIBS_DIR/Operators_test/hdl
+RS232 = $HEI_LIBS_DIR/RS232/hdl
+RS232_test = $HEI_LIBS_DIR/RS232_test/hdl
+sequential = $HEI_LIBS_DIR/Sequential/hdl
+std = $HDS_HOME/hdl_libs/std/hdl
+[hds]
+Board = $HDS_PROJECT_DIR/../Board/hds
+Common = $HEI_LIBS_DIR/Common/hds
+Common_test = $HEI_LIBS_DIR/Common_test/hds
+gates = $HEI_LIBS_DIR/Gates/hds
+GeneratorControl = $HDS_PROJECT_DIR/../GeneratorControl/hds
+GeneratorControl_test = $HDS_PROJECT_DIR/../GeneratorControl_test/hds
+ieee = $HDS_HOME/hdl_libs/ieee/hds
+io = $HEI_LIBS_DIR/IO/hds
+Lattice = $HEI_LIBS_DIR/Lattice/hds
+Memory = $HEI_LIBS_DIR/Memory/hds
+Memory_test = $HEI_LIBS_DIR/Memory_test/hds
+Operators = $HEI_LIBS_DIR/Operators/hds
+Operators_test = $HEI_LIBS_DIR/Operators_test/hds
+RS232 = $HEI_LIBS_DIR/RS232/hds
+RS232_test = $HEI_LIBS_DIR/RS232_test/hds
+sequential = $HEI_LIBS_DIR/Sequential/hds
+std = $HDS_HOME/hdl_libs/std/hds
+[hds_settings]
+design_root = Board.EBS3(struct)@e@b@s3/struct.bd
+[library_files_inclusion]
+Lattice = all
+[library_type]
+Board = regular
+ieee = standard
+Lattice = regular
+std = standard
+[shared]
+others = $HDS_TEAM_HOME/shared.hdp

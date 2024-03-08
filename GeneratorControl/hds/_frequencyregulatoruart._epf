@@ -1,0 +1,2 @@
+DEFAULT_FILE atom frequency@regulator@uart/struct.bd
+DEFAULT_ARCHITECTURE atom struct

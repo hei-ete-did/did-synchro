@@ -1,0 +1,3 @@
+DEFAULT_FILE atom generator@control/student@version.bd
+DEFAULT_ARCHITECTURE atom studentVersion
+TOP_MARKER atom 1

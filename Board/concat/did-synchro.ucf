@@ -1,0 +1,65 @@
+#-------------------------------------------------------------------------------
+# Clock and reset
+#
+NET     "clock"         LOC = "A10";
+NET     "reset_n"       LOC = "A15"     | PULLUP;
+#NET     "testMode"      LOC = "T10";
+
+#-------------------------------------------------------------------------------
+# 50 Hz signals
+#
+NET     "mains"         LOC = "E2" ;
+NET     "generator"     LOC = "G3" ;
+
+#-------------------------------------------------------------------------------
+# PWM
+#
+NET     "pwm"           LOC = "G4" ;
+
+#-------------------------------------------------------------------------------
+# Buttons
+#
+NET     "buttons_n<1>"  LOC = "E8" ;
+NET     "buttons_n<2>"  LOC = "G9" ;
+NET     "buttons_n<3>"  LOC = "F9" ;
+NET     "buttons_n<4>"  LOC = "F7" ;
+
+#-------------------------------------------------------------------------------
+# LEDs
+#
+NET     "LED1"          LOC = "B16";
+NET     "LED2"          LOC = "A16";
+NET     "LEDs_n<1>"     LOC = "E7" ;
+NET     "LEDs_n<2>"     LOC = "B14";
+NET     "LEDs_n<3>"     LOC = "B13";
+NET     "LEDs_n<4>"     LOC = "B11";
+NET     "LEDs_n<5>"     LOC = "A8" ;
+NET     "LEDs_n<6>"     LOC = "C7" ;
+NET     "LEDs_n<7>"     LOC = "A14";
+NET     "LEDs_n<8>"     LOC = "A11";
+
+#-------------------------------------------------------------------------------
+# UART
+#
+NET     "RxD"           LOC = "V2" ;
+NET     "TxD"           LOC = "T1" ;
+
+#-------------------------------------------------------------------------------
+# Test pins on synchro board connector
+#
+NET     "test<1>"       LOC = "D5" ;
+NET     "test<2>"       LOC = "C3" ;
+NET     "test<3>"       LOC = "C4" ;
+NET     "test<4>"       LOC = "C5" ;
+NET     "test<5>"       LOC = "G6" ;
+NET     "test<6>"       LOC = "B3" ;
+NET     "test<7>"       LOC = "B4" ;
+NET     "test<8>"       LOC = "A4" ;
+NET     "test<9>"       LOC = "B6" ;
+NET     "test<10>"      LOC = "A6" ;
+
+
+#-------------------------------------------------------------------------------
+# Globals
+#
+NET "*" IOSTANDARD = LVCMOS33;
