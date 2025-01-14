@@ -1140,6 +1140,10 @@ first "Notepad++"
 second "notepad++.exe \"%(p)\" -n%(l)"
 )
 (pair
+first "Sublime Text"
+second "subl.exe \"%(p)\""
+)
+(pair
 first "Textpad 3.2"
 second "txtpad32.exe \"%(p)(%(l))\""
 )
@@ -1150,6 +1154,10 @@ second "textpad.exe \"%(p)(%(l))\""
 (pair
 first "UltraEdit"
 second "uedit32.exe \"%(p)/%(l)\""
+)
+(pair
+first "VSCode"
+second "code.exe \"%(p)\""
 )
 (pair
 first "WinEdit"
@@ -1178,6 +1186,10 @@ first "Notepad++"
 second "notepad++.exe \"%(p)\" -n%(l) -ro"
 )
 (pair
+first "Sublime Text"
+second "subl.exe \"%(p)\""
+)
+(pair
 first "Textpad 3.2"
 second "txtpad32.exe -r \"%(p)(%(l))\""
 )
@@ -1189,12 +1201,18 @@ second "textpad.exe -r \"%(p)(%(l))\""
 first "UltraEdit"
 second "uedit32.exe \"%(p)/%(l)\" /r"
 )
+(pair
+first "VSCode"
+second "code.exe \"%(p)\""
+)
 ]
 defaultTextPrintingCmd "Enscript"
-win32DefaultEditor "Notepad++"
-win32DefaultViewer "Notepad++"
+win32DefaultEditor "VSCode"
+win32DefaultViewer "VSCode"
 unixDefaultEditor "Builtin"
 unixDefaultViewer "Builtin"
+defaultLanguage 11
+defaultVhdlDialect 11
 defaultVerilogDialect 5
 verilogSearchPath ""
 syscUserIncPath ""
@@ -1220,7 +1238,6 @@ verilogDefaultSaveName "untitled"
 vhdlDefaultSaveName "untitled"
 toolbarVisibility [
 "BdWindow:FormatText"
-"SymbolWindow:FormatText"
 "AsmWindow:FormatText"
 "FcWindow:FormatText"
 "StdWindow:FormatText"
@@ -1266,11 +1283,11 @@ projectPaths [
 "C:\\work\\git\\Education\\eln\\labo\\solution\\eln_labs\\Prefs\\hds.hdp"
 "C:\\work\\git\\Education\\eln\\projects\\student\\eln_chrono\\Prefs\\hds.hdp"
 "C:\\work\\git\\Education\\eln\\projects\\solution\\eln_chrono\\Prefs\\hds.hdp"
-"C:\\work\\git\\Education\\eln\\projects\\solution\\eln_inverter\\Prefs\\hds.hdp"
-"C:\\work\\edu\\eln\\project\\eln_inverter\\Prefs\\hds.hdp"
-"C:\\Users\\francois.corthay\\Documents\\eln_inverter\\Prefs\\hds.hdp"
-"C:\\Users\\francois.corthay\\Documents\\Projects\\ElN_synchro\\Prefs\\hds.hdp"
-"C:\\dev\\did-synchro\\Prefs\\hds.hdp"
+"C:\\work\\edu\\eln\\project\\eln_chrono\\Prefs\\hds.hdp"
+"C:\\dev\\eln_chrono\\Prefs\\hds.hdp"
+"C:\\dev\\did-chrono\\Prefs\\hds.hdp"
+"C:\\dev\\DiD\\did-chrono\\Prefs\\hds.hdp"
+"C:\\dev\\DiD\\did-synchro\\Prefs\\hds.hdp"
 ]
 libMappingsRootDir ""
 teamLibMappingsRootDir ""
@@ -1509,7 +1526,7 @@ width 816
 height 1161
 )
 (PageSizeInfo
-name "Format papier personnalisé"
+name "Format papier personnalisï¿½"
 type 256
 width 783
 height 1013
@@ -1665,9 +1682,13 @@ second "concatenated"
 defaultCategoryTemplates [
 1
 "architecture.vhd"
+3
+"combined.vhd"
 ]
 defaultCategoryTemplatesPrefs [
 1
+0
+3
 0
 ]
 tasksOrder [
@@ -4284,7 +4305,7 @@ hdsWorkspaceLocation ""
 relativeLibraryRootDir ""
 vmLabelLatestDontAskAgain 0
 vmLabelWorkspaceDontAskAgain 0
-logWindowGeometry "834x916+1063+35"
+logWindowGeometry "622x780+-1509+-125"
 diagramBrowserTabNo 0
 showInsertPortHint 0
 showContentFirstTime 0
@@ -5177,20 +5198,20 @@ accessRights 2
 theList "Design Units"
 columns [
 (TreeListVPData_Column
-name "Language"
-width 100
-)
-(TreeListVPData_Column
-name "Time Stamp"
-width 120
-)
-(TreeListVPData_Column
 name "Type"
 width 140
 )
 (TreeListVPData_Column
 name "Extends"
 width 100
+)
+(TreeListVPData_Column
+name "Language"
+width 100
+)
+(TreeListVPData_Column
+name "Time Stamp"
+width 120
 )
 ]
 filterString ""
@@ -6260,42 +6281,6 @@ declHierarchy [
 activeViewpointIdx 0
 )
 (WorkTab
-name "Chronometer"
-showingHierarchy 0
-openLibs [
-]
-declHierarchy [
-]
-activeViewpointIdx 0
-)
-(WorkTab
-name "Chronometer_test"
-showingHierarchy 0
-openLibs [
-]
-declHierarchy [
-]
-activeViewpointIdx 0
-)
-(WorkTab
-name "Inverter"
-showingHierarchy 0
-openLibs [
-]
-declHierarchy [
-]
-activeViewpointIdx 0
-)
-(WorkTab
-name "Inverter_test"
-showingHierarchy 0
-openLibs [
-]
-declHierarchy [
-]
-activeViewpointIdx 0
-)
-(WorkTab
 name "Board"
 showingHierarchy 0
 openLibs [
@@ -6306,7 +6291,16 @@ declHierarchy [
 activeViewpointIdx 0
 )
 (WorkTab
-name "CommandLine"
+name "Chronometer"
+showingHierarchy 0
+openLibs [
+]
+declHierarchy [
+]
+activeViewpointIdx 0
+)
+(WorkTab
+name "Chronometer_test"
 showingHierarchy 0
 openLibs [
 ]
@@ -6356,22 +6350,23 @@ size 190
 )
 ]
 displayHierarchy 0
-xPos 0
-yPos 20
+xPos -1920
+yPos -251
 width 1936
-height 1056
+height 1048
 activeSidePanelTab 2
 activeLibraryTab 1
 sidePanelSize 293
 showUnixHiddenFiles 0
 componentBrowserXpos 569
-componentBrowserYpos 300
 componentBrowserWidth 300
 componentBrowserHeight 340
 componentBrowserLibraryNames [
-"Board"
+"Common"
 "gates"
+"Chronometer"
 "sequential"
+"Lattice"
 ]
 )
 (SmPreferences
@@ -6455,6 +6450,8 @@ display "State Register Statements"
 status 1
 )
 ]
+vhdlScalarType "std_ulogic"
+vhdlVectorType "std_ulogic_vector"
 clockNameVaSet (VaSet
 )
 clockShapeVaSet (VaSet
@@ -6484,6 +6481,7 @@ recoveryShapeVaSet (VaSet
 vasetType 1
 fg "65535,0,0"
 )
+rstLevel 1
 stateShapeVaSet (VaSet
 vasetType 1
 fg "0,65535,65535"
@@ -6617,7 +6615,7 @@ archConcurrentStatementBlockValueVaSet (VaSet
 )
 outputSignalStatus 1
 internalSignalStatus 2
-showPropsDlgMsg 1
+showPropsDlgMsg 0
 )
 (H2gPreferences
 filesAdded [
@@ -6818,7 +6816,7 @@ cptPortOutName "Out0"
 cptPortInOutName "InOut0"
 cptPortBufferName "Buffer0"
 groupName "Group0"
-cptPortVhdlType "unsigned"
+cptPortVhdlType "std_ulogic"
 cptPortVerilogType "wire"
 cptPortVhdlBounds "(15 DOWNTO 0)"
 cptPortVerilogLb "15"

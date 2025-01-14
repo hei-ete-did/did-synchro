@@ -112,23 +112,23 @@ value " "
 )
 (vvPair
 variable "HDLDir"
-value "C:\\dev\\did-synchro\\Prefs\\..\\GeneratorControl\\hdl"
+value "C:\\dev\\DiD\\did-synchro\\Prefs\\..\\GeneratorControl\\hdl"
 )
 (vvPair
 variable "HDSDir"
-value "C:\\dev\\did-synchro\\Prefs\\..\\GeneratorControl\\hds"
+value "C:\\dev\\DiD\\did-synchro\\Prefs\\..\\GeneratorControl\\hds"
 )
 (vvPair
 variable "SideDataDesignDir"
-value "C:\\dev\\did-synchro\\Prefs\\..\\GeneratorControl\\hds\\frequency@regulators\\struct.bd.info"
+value "C:\\dev\\DiD\\did-synchro\\Prefs\\..\\GeneratorControl\\hds\\frequency@regulators\\struct.bd.info"
 )
 (vvPair
 variable "SideDataUserDir"
-value "C:\\dev\\did-synchro\\Prefs\\..\\GeneratorControl\\hds\\frequency@regulators\\struct.bd.user"
+value "C:\\dev\\DiD\\did-synchro\\Prefs\\..\\GeneratorControl\\hds\\frequency@regulators\\struct.bd.user"
 )
 (vvPair
 variable "SourceDir"
-value "C:\\dev\\did-synchro\\Prefs\\..\\GeneratorControl\\hds"
+value "C:\\dev\\DiD\\did-synchro\\Prefs\\..\\GeneratorControl\\hds"
 )
 (vvPair
 variable "appl"
@@ -148,27 +148,27 @@ value "%(unit)_%(view)_config"
 )
 (vvPair
 variable "d"
-value "C:\\dev\\did-synchro\\Prefs\\..\\GeneratorControl\\hds\\frequency@regulators"
+value "C:\\dev\\DiD\\did-synchro\\Prefs\\..\\GeneratorControl\\hds\\frequency@regulators"
 )
 (vvPair
 variable "d_logical"
-value "C:\\dev\\did-synchro\\Prefs\\..\\GeneratorControl\\hds\\frequencyRegulators"
+value "C:\\dev\\DiD\\did-synchro\\Prefs\\..\\GeneratorControl\\hds\\frequencyRegulators"
 )
 (vvPair
 variable "date"
-value "05.04.2023"
+value "14.01.2025"
 )
 (vvPair
 variable "day"
-value "mer."
+value "mar."
 )
 (vvPair
 variable "day_long"
-value "mercredi"
+value "mardi"
 )
 (vvPair
 variable "dd"
-value "05"
+value "14"
 )
 (vvPair
 variable "designName"
@@ -196,11 +196,11 @@ value "struct"
 )
 (vvPair
 variable "graphical_source_author"
-value "axel.amand"
+value "Axam"
 )
 (vvPair
 variable "graphical_source_date"
-value "05.04.2023"
+value "14.01.2025"
 )
 (vvPair
 variable "graphical_source_group"
@@ -208,11 +208,11 @@ value "UNKNOWN"
 )
 (vvPair
 variable "graphical_source_host"
-value "WE7860"
+value "WE10628"
 )
 (vvPair
 variable "graphical_source_time"
-value "10:33:49"
+value "16:56:12"
 )
 (vvPair
 variable "group"
@@ -220,7 +220,7 @@ value "UNKNOWN"
 )
 (vvPair
 variable "host"
-value "WE7860"
+value "WE10628"
 )
 (vvPair
 variable "language"
@@ -236,7 +236,7 @@ value "$SCRATCH_DIR/$DESIGN_NAME/GeneratorControl"
 )
 (vvPair
 variable "mm"
-value "04"
+value "01"
 )
 (vvPair
 variable "module_name"
@@ -244,19 +244,19 @@ value "frequencyRegulators"
 )
 (vvPair
 variable "month"
-value "avr."
+value "janv."
 )
 (vvPair
 variable "month_long"
-value "avril"
+value "janvier"
 )
 (vvPair
 variable "p"
-value "C:\\dev\\did-synchro\\Prefs\\..\\GeneratorControl\\hds\\frequency@regulators\\struct.bd"
+value "C:\\dev\\DiD\\did-synchro\\Prefs\\..\\GeneratorControl\\hds\\frequency@regulators\\struct.bd"
 )
 (vvPair
 variable "p_logical"
-value "C:\\dev\\did-synchro\\Prefs\\..\\GeneratorControl\\hds\\frequencyRegulators\\struct.bd"
+value "C:\\dev\\DiD\\did-synchro\\Prefs\\..\\GeneratorControl\\hds\\frequencyRegulators\\struct.bd"
 )
 (vvPair
 variable "package_name"
@@ -324,7 +324,7 @@ value "struct"
 )
 (vvPair
 variable "time"
-value "10:33:49"
+value "16:56:12"
 )
 (vvPair
 variable "unit"
@@ -332,7 +332,7 @@ value "frequencyRegulators"
 )
 (vvPair
 variable "user"
-value "axel.amand"
+value "Axam"
 )
 (vvPair
 variable "version"
@@ -344,11 +344,11 @@ value "struct"
 )
 (vvPair
 variable "year"
-value "2023"
+value "2025"
 )
 (vvPair
 variable "yy"
-value "23"
+value "25"
 )
 ]
 )
@@ -711,7 +711,7 @@ va (VaSet
 fg "0,0,32768"
 bg "0,0,32768"
 )
-xt "98200,97400,114300,98600"
+xt "98200,97400,116000,98600"
 st "
 by %user on %dd %month %year
 "
@@ -3401,8 +3401,8 @@ tm "BdCompilerDirectivesTextMgr"
 ]
 associable 1
 )
-windowSize "-8,-8,1928,1048"
-viewArea "-5150,-2146,185748,101574"
+windowSize "-1928,-259,8,789"
+viewArea "-5200,-2100,186710,101271"
 cachedDiagramExtent "-3000,0,144000,99000"
 pageSetupInfo (PageSetupInfo
 ptrCmd ""
@@ -3427,7 +3427,7 @@ boundaryWidth 0
 )
 hasePageBreakOrigin 1
 pageBreakOrigin "-3000,0"
-lastUid 1855,0
+lastUid 1910,0
 defaultCommentText (CommentText
 shape (Rectangle
 layer 0
