@@ -67,67 +67,31 @@ elements [
 (GiElement
 name "g_CLOCK_FREQUENCY"
 type "real"
-value "100.0E6"
+value "clockFrequency"
 )
 (GiElement
 name "g_BAUD_RATE_DIVIDER"
 type "positive"
-value "c_BAUDRATE_DIVIDER "
-)
-]
-mwi 0
-uid 597,0
-)
-(Instance
-name "U_rsTrans"
-duLibraryName "RS232"
-duName "serialPortTransmitter"
-elements [
-(GiElement
-name "g_BAUD_RATE_DIVIDER"
-type "positive"
-value "c_BAUDRATE_DIVIDER "
-e "Clock divider to reach baudrate of one bit. At least 2."
-)
-(GiElement
-name "g_DATA_BIT_NB"
-type "positive"
-value "8"
-e "Number of data bits per frame. From 5 to 9."
-)
-(GiElement
-name "g_LSB_FIRST"
-type "std_ulogic"
-value "'1'"
-e "If should send data with LSb first."
+value "integer(clockFrequency/rs232BaudRate + 0.5)"
 )
 (GiElement
 name "g_USE_PARITY"
 type "std_ulogic"
-value "'1'"
-e "If adds a parity bit."
+value "c_USE_PARITY"
+)
+(GiElement
+name "g_LSB_FIRST"
+type "std_ulogic"
+value "c_LSB_FIRST"
 )
 (GiElement
 name "g_PARITY_IS_EVEN"
 type "std_ulogic"
-value "'1'"
-e "If parity enabled, select if the parity bit is EVEN ('1') or ODD."
-)
-(GiElement
-name "g_STOP_BITS"
-type "real"
-value "1.0"
-e "Number of stop bits - 1.0, 1.5 or 2.0."
-)
-(GiElement
-name "g_IDLE_STATE"
-type "std_ulogic"
-value "'1'"
-e "Idle state for Tx/Rx when not in action"
+value "c_PARITY_IS_EVEN"
 )
 ]
 mwi 0
-uid 847,0
+uid 597,0
 )
 (Instance
 name "U_rsRec"
@@ -137,37 +101,37 @@ elements [
 (GiElement
 name "g_BAUD_RATE_DIVIDER"
 type "positive"
-value "c_BAUDRATE_DIVIDER "
+value "integer(clockFrequency/rs232BaudRate + 0.5)"
 e "Clock divider to reach baudrate of one bit. At least 4 to triple sample the incoming data."
 )
 (GiElement
 name "g_DATA_BIT_NB"
 type "positive"
-value "8"
+value "rs232BitNb"
 e "Number of data bits per frame. From 5 to 9."
 )
 (GiElement
 name "g_LSB_FIRST"
 type "std_ulogic"
-value "'1'"
+value "c_LSB_FIRST"
 e "If should send data with LSb first."
 )
 (GiElement
 name "g_USE_PARITY"
 type "std_ulogic"
-value "'1'"
+value "c_USE_PARITY"
 e "If adds a parity bit."
 )
 (GiElement
 name "g_PARITY_IS_EVEN"
 type "std_ulogic"
-value "'1'"
+value "c_PARITY_IS_EVEN"
 e "If parity enabled, select if the parity bit is EVEN ('1') or ODD."
 )
 (GiElement
 name "g_STOP_BITS"
 type "real"
-value "1.0"
+value "c_STOP_BITS"
 e "Number of stop bits - 1.0, 1.5 or 2.0."
 )
 (GiElement
@@ -178,7 +142,58 @@ e "Idle state for Tx/Rx when not in action"
 )
 ]
 mwi 0
-uid 897,0
+uid 1058,0
+)
+(Instance
+name "U_rsTrans"
+duLibraryName "RS232"
+duName "serialPortTransmitter"
+elements [
+(GiElement
+name "g_BAUD_RATE_DIVIDER"
+type "positive"
+value "integer(clockFrequency/rs232BaudRate + 0.5)"
+e "Clock divider to reach baudrate of one bit. At least 2."
+)
+(GiElement
+name "g_DATA_BIT_NB"
+type "positive"
+value "rs232BitNb"
+e "Number of data bits per frame. From 5 to 9."
+)
+(GiElement
+name "g_LSB_FIRST"
+type "std_ulogic"
+value "c_LSB_FIRST"
+e "If should send data with LSb first."
+)
+(GiElement
+name "g_USE_PARITY"
+type "std_ulogic"
+value "c_USE_PARITY"
+e "If adds a parity bit."
+)
+(GiElement
+name "g_PARITY_IS_EVEN"
+type "std_ulogic"
+value "c_PARITY_IS_EVEN"
+e "If parity enabled, select if the parity bit is EVEN ('1') or ODD."
+)
+(GiElement
+name "g_STOP_BITS"
+type "real"
+value "c_STOP_BITS"
+e "Number of stop bits - 1.0, 1.5 or 2.0."
+)
+(GiElement
+name "g_IDLE_STATE"
+type "std_ulogic"
+value "'1'"
+e "Idle state for Tx/Rx when not in action"
+)
+]
+mwi 0
+uid 1108,0
 )
 (Instance
 name "U_rsRec1"
@@ -188,37 +203,37 @@ elements [
 (GiElement
 name "g_BAUD_RATE_DIVIDER"
 type "positive"
-value "c_BAUDRATE_DIVIDER "
+value "integer(clockFrequency/rs232BaudRate + 0.5)"
 e "Clock divider to reach baudrate of one bit. At least 4 to triple sample the incoming data."
 )
 (GiElement
 name "g_DATA_BIT_NB"
 type "positive"
-value "8"
+value "rs232BitNb"
 e "Number of data bits per frame. From 5 to 9."
 )
 (GiElement
 name "g_LSB_FIRST"
 type "std_ulogic"
-value "'1'"
+value "c_LSB_FIRST"
 e "If should send data with LSb first."
 )
 (GiElement
 name "g_USE_PARITY"
 type "std_ulogic"
-value "'1'"
+value "c_USE_PARITY"
 e "If adds a parity bit."
 )
 (GiElement
 name "g_PARITY_IS_EVEN"
 type "std_ulogic"
-value "'1'"
+value "c_PARITY_IS_EVEN"
 e "If parity enabled, select if the parity bit is EVEN ('1') or ODD."
 )
 (GiElement
 name "g_STOP_BITS"
 type "real"
-value "1.0"
+value "c_STOP_BITS"
 e "Number of stop bits - 1.0, 1.5 or 2.0."
 )
 (GiElement
@@ -229,7 +244,7 @@ e "Idle state for Tx/Rx when not in action"
 )
 ]
 mwi 0
-uid 947,0
+uid 1150,0
 )
 ]
 libraryRefs [
@@ -289,19 +304,19 @@ value "C:\\dev\\Clearspace\\clearspace-fpga\\Prefs\\..\\Libs\\RS232_test\\hds\\s
 )
 (vvPair
 variable "date"
-value "16.04.2025"
+value "21.08.2025"
 )
 (vvPair
 variable "day"
-value "mer."
+value "jeu."
 )
 (vvPair
 variable "day_long"
-value "mercredi"
+value "jeudi"
 )
 (vvPair
 variable "dd"
-value "16"
+value "21"
 )
 (vvPair
 variable "entity_name"
@@ -329,7 +344,7 @@ value "Axam"
 )
 (vvPair
 variable "graphical_source_date"
-value "16.04.2025"
+value "21.08.2025"
 )
 (vvPair
 variable "graphical_source_group"
@@ -341,7 +356,7 @@ value "WE10628"
 )
 (vvPair
 variable "graphical_source_time"
-value "16:28:54"
+value "14:49:59"
 )
 (vvPair
 variable "group"
@@ -365,11 +380,11 @@ value "$HDS_PROJECT_DIR/../Libs/RS232_test/concat"
 )
 (vvPair
 variable "library_downstream_ModelSimCompiler"
-value "$SCRATCH_DIR/RS232_test"
+value "$SCRATCH_DIR/RS232_test/work"
 )
 (vvPair
 variable "mm"
-value "04"
+value "08"
 )
 (vvPair
 variable "module_name"
@@ -377,11 +392,11 @@ value "serialPort_tb"
 )
 (vvPair
 variable "month"
-value "avr."
+value "août"
 )
 (vvPair
 variable "month_long"
-value "avril"
+value "août"
 )
 (vvPair
 variable "p"
@@ -417,7 +432,7 @@ value "struct"
 )
 (vvPair
 variable "time"
-value "16:28:54"
+value "14:49:59"
 )
 (vvPair
 variable "unit"
@@ -1061,8 +1076,9 @@ uid 515,0
 va (VaSet
 font "Courier New,8,0"
 )
-xt "8000,14000,28500,14800"
-st "SIGNAL send_rs            : std_uLogic"
+xt "8000,20400,28500,21200"
+st "SIGNAL send_rs            : std_uLogic
+"
 )
 )
 *23 (Net
@@ -1078,8 +1094,9 @@ uid 519,0
 va (VaSet
 font "Courier New,8,0"
 )
-xt "8000,10800,28500,11600"
-st "SIGNAL o_byte_received    : std_ulogic"
+xt "8000,17200,28500,18000"
+st "SIGNAL o_byte_received    : std_ulogic
+"
 )
 )
 *24 (Net
@@ -1095,8 +1112,9 @@ uid 523,0
 va (VaSet
 font "Courier New,8,0"
 )
-xt "8000,8400,28500,9200"
-st "SIGNAL empty              : std_ulogic"
+xt "8000,14800,28500,15600"
+st "SIGNAL empty              : std_ulogic
+"
 )
 )
 *25 (Net
@@ -1113,8 +1131,9 @@ uid 525,0
 va (VaSet
 font "Courier New,8,0"
 )
-xt "8000,7600,39500,8400"
-st "SIGNAL dataOut            : std_ulogic_vector(8-1 DOWNTO 0)"
+xt "8000,14000,39500,14800"
+st "SIGNAL dataOut            : std_ulogic_vector(8-1 DOWNTO 0)
+"
 )
 )
 *26 (SaComponent
@@ -1266,8 +1285,9 @@ uid 544,0
 va (VaSet
 font "Courier New,8,0"
 )
-xt "8000,10000,28500,10800"
-st "SIGNAL logic_1            : std_uLogic"
+xt "8000,16400,28500,17200"
+st "SIGNAL logic_1            : std_uLogic
+"
 )
 )
 *32 (Net
@@ -1284,8 +1304,9 @@ uid 554,0
 va (VaSet
 font "Courier New,8,0"
 )
-xt "8000,6800,28500,7600"
-st "SIGNAL clk                : std_ulogic"
+xt "8000,13200,28500,14000"
+st "SIGNAL clk                : std_ulogic
+"
 )
 )
 *33 (Net
@@ -1301,8 +1322,9 @@ uid 556,0
 va (VaSet
 font "Courier New,8,0"
 )
-xt "8000,12400,28500,13200"
-st "SIGNAL rst                : std_uLogic"
+xt "8000,18800,28500,19600"
+st "SIGNAL rst                : std_uLogic
+"
 )
 )
 *34 (Net
@@ -1319,8 +1341,9 @@ uid 592,0
 va (VaSet
 font "Courier New,8,0"
 )
-xt "8000,15600,28500,16400"
-st "SIGNAL txd_en             : std_uLogic"
+xt "8000,22000,28500,22800"
+st "SIGNAL txd_en             : std_uLogic
+"
 )
 )
 *35 (Net
@@ -1337,8 +1360,9 @@ uid 594,0
 va (VaSet
 font "Courier New,8,0"
 )
-xt "8000,14800,28500,15600"
-st "SIGNAL txd                : std_uLogic"
+xt "8000,21200,28500,22000"
+st "SIGNAL txd                : std_uLogic
+"
 )
 )
 *36 (Net
@@ -1355,8 +1379,9 @@ uid 596,0
 va (VaSet
 font "Courier New,8,0"
 )
-xt "8000,13200,28500,14000"
-st "SIGNAL rxd                : std_uLogic"
+xt "8000,19600,28500,20400"
+st "SIGNAL rxd                : std_uLogic
+"
 )
 )
 *37 (Blk
@@ -1418,9 +1443,12 @@ uid 605,0
 va (VaSet
 font "Courier New,8,0"
 )
-xt "-20500,70200,11000,71800"
-st "g_CLOCK_FREQUENCY   = 100.0E6                ( real     )  
-g_BAUD_RATE_DIVIDER = c_BAUDRATE_DIVIDER     ( positive )  "
+xt "-20500,70200,24000,74200"
+st "g_CLOCK_FREQUENCY   = clockFrequency                                 ( real       )  
+g_BAUD_RATE_DIVIDER = integer(clockFrequency/rs232BaudRate + 0.5)    ( positive   )  
+g_USE_PARITY        = c_USE_PARITY                                   ( std_ulogic )  
+g_LSB_FIRST         = c_LSB_FIRST                                    ( std_ulogic )  
+g_PARITY_IS_EVEN    = c_PARITY_IS_EVEN                               ( std_ulogic )  "
 )
 header ""
 )
@@ -1428,12 +1456,27 @@ elements [
 (GiElement
 name "g_CLOCK_FREQUENCY"
 type "real"
-value "100.0E6"
+value "clockFrequency"
 )
 (GiElement
 name "g_BAUD_RATE_DIVIDER"
 type "positive"
-value "c_BAUDRATE_DIVIDER "
+value "integer(clockFrequency/rs232BaudRate + 0.5)"
+)
+(GiElement
+name "g_USE_PARITY"
+type "std_ulogic"
+value "c_USE_PARITY"
+)
+(GiElement
+name "g_LSB_FIRST"
+type "std_ulogic"
+value "c_LSB_FIRST"
+)
+(GiElement
+name "g_PARITY_IS_EVEN"
+type "std_ulogic"
+value "c_PARITY_IS_EVEN"
 )
 ]
 )
@@ -1465,8 +1508,9 @@ uid 614,0
 va (VaSet
 font "Courier New,8,0"
 )
-xt "8000,9200,28500,10000"
-st "SIGNAL is_sending         : std_ulogic"
+xt "8000,15600,28500,16400"
+st "SIGNAL is_sending         : std_ulogic
+"
 )
 )
 *42 (Net
@@ -1483,8 +1527,9 @@ uid 670,0
 va (VaSet
 font "Courier New,8,0"
 )
-xt "8000,11600,39500,12400"
-st "SIGNAL read_byte          : std_ulogic_vector(8-1 DOWNTO 0)"
+xt "8000,18000,39500,18800"
+st "SIGNAL read_byte          : std_ulogic_vector(8-1 DOWNTO 0)
+"
 )
 )
 *43 (Net
@@ -1501,453 +1546,19 @@ uid 761,0
 va (VaSet
 font "Courier New,8,0"
 )
-xt "8000,6000,39500,6800"
-st "SIGNAL byte_reconstructed : std_ulogic_vector(8-1 DOWNTO 0)"
+xt "8000,12400,39500,13200"
+st "SIGNAL byte_reconstructed : std_ulogic_vector(8-1 DOWNTO 0)
+"
 )
 )
 *44 (SaComponent
-uid 847,0
+uid 1058,0
 optionalChildren [
 *45 (CptPort
-uid 815,0
+uid 1068,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 816,0
-ro 90
-va (VaSet
-vasetType 1
-fg "0,65535,0"
-)
-xt "97250,35625,98000,36375"
-)
-tg (CPTG
-uid 817,0
-ps "CptPortTextPlaceStrategy"
-stg "VerticalLayoutStrategy"
-f (Text
-uid 818,0
-va (VaSet
-font "Verdana,12,0"
-)
-xt "99000,35300,102500,36700"
-st "i_clk"
-blo "99000,36500"
-)
-)
-thePort (LogicalPort
-lang 11
-decl (Decl
-n "i_clk"
-t "std_ulogic"
-o 83
-suid 1,0
-)
-)
-)
-*46 (CptPort
-uid 819,0
-ps "OnEdgeStrategy"
-shape (Triangle
-uid 820,0
-ro 90
-va (VaSet
-vasetType 1
-fg "0,65535,0"
-)
-xt "97250,28625,98000,29375"
-)
-tg (CPTG
-uid 821,0
-ps "CptPortTextPlaceStrategy"
-stg "VerticalLayoutStrategy"
-f (Text
-uid 822,0
-va (VaSet
-font "Verdana,12,0"
-)
-xt "99000,28300,103800,29700"
-st "i_data"
-blo "99000,29500"
-)
-)
-thePort (LogicalPort
-lang 11
-decl (Decl
-n "i_data"
-t "std_ulogic_vector"
-b "(g_DATA_BIT_NB-1 DOWNTO 0)"
-o 85
-suid 2,0
-)
-)
-)
-*47 (CptPort
-uid 823,0
-ps "OnEdgeStrategy"
-shape (Triangle
-uid 824,0
-ro 90
-va (VaSet
-vasetType 1
-fg "0,65535,0"
-)
-xt "97250,37625,98000,38375"
-)
-tg (CPTG
-uid 825,0
-ps "CptPortTextPlaceStrategy"
-stg "VerticalLayoutStrategy"
-f (Text
-uid 826,0
-va (VaSet
-font "Verdana,12,0"
-)
-xt "99000,37300,102600,38700"
-st "i_rst"
-blo "99000,38500"
-)
-)
-thePort (LogicalPort
-lang 11
-decl (Decl
-n "i_rst"
-t "std_ulogic"
-o 84
-suid 3,0
-)
-)
-)
-*48 (CptPort
-uid 827,0
-ps "OnEdgeStrategy"
-shape (Triangle
-uid 828,0
-ro 90
-va (VaSet
-vasetType 1
-fg "0,65535,0"
-)
-xt "97250,30625,98000,31375"
-)
-tg (CPTG
-uid 829,0
-ps "CptPortTextPlaceStrategy"
-stg "VerticalLayoutStrategy"
-f (Text
-uid 830,0
-va (VaSet
-font "Verdana,12,0"
-)
-xt "99000,30300,104000,31700"
-st "i_send"
-blo "99000,31500"
-)
-)
-thePort (LogicalPort
-lang 11
-decl (Decl
-n "i_send"
-t "std_ulogic"
-o 86
-suid 4,0
-)
-)
-)
-*49 (CptPort
-uid 831,0
-ps "OnEdgeStrategy"
-shape (Triangle
-uid 832,0
-va (VaSet
-vasetType 1
-fg "0,65535,0"
-)
-xt "106625,26250,107375,27000"
-)
-tg (CPTG
-uid 833,0
-ps "CptPortTextPlaceStrategy"
-stg "RightVerticalLayoutStrategy"
-f (Text
-uid 834,0
-ro 270
-va (VaSet
-font "Verdana,12,0"
-)
-xt "106300,28000,107700,42800"
-st "o_illegalstate_error"
-ju 2
-blo "107500,28000"
-)
-)
-thePort (LogicalPort
-lang 11
-m 1
-decl (Decl
-n "o_illegalstate_error"
-t "std_ulogic"
-o 90
-suid 5,0
-)
-)
-)
-*50 (CptPort
-uid 835,0
-ps "OnEdgeStrategy"
-shape (Triangle
-uid 836,0
-ro 90
-va (VaSet
-vasetType 1
-fg "0,65535,0"
-)
-xt "119000,34625,119750,35375"
-)
-tg (CPTG
-uid 837,0
-ps "CptPortTextPlaceStrategy"
-stg "RightVerticalLayoutStrategy"
-f (Text
-uid 838,0
-va (VaSet
-font "Verdana,12,0"
-)
-xt "108000,34300,118000,35700"
-st "o_is_sending"
-ju 2
-blo "118000,35500"
-)
-)
-thePort (LogicalPort
-lang 11
-m 1
-decl (Decl
-n "o_is_sending"
-t "std_ulogic"
-o 87
-suid 6,0
-)
-)
-)
-*51 (CptPort
-uid 839,0
-ps "OnEdgeStrategy"
-shape (Triangle
-uid 840,0
-ro 90
-va (VaSet
-vasetType 1
-fg "0,65535,0"
-)
-xt "119000,28625,119750,29375"
-)
-tg (CPTG
-uid 841,0
-ps "CptPortTextPlaceStrategy"
-stg "RightVerticalLayoutStrategy"
-f (Text
-uid 842,0
-va (VaSet
-font "Verdana,12,0"
-)
-xt "113600,28300,118000,29700"
-st "o_txd"
-ju 2
-blo "118000,29500"
-)
-)
-thePort (LogicalPort
-lang 11
-m 1
-decl (Decl
-n "o_txd"
-t "std_ulogic"
-o 88
-suid 7,0
-)
-)
-)
-*52 (CptPort
-uid 843,0
-ps "OnEdgeStrategy"
-shape (Triangle
-uid 844,0
-ro 90
-va (VaSet
-vasetType 1
-fg "0,65535,0"
-)
-xt "119000,30625,119750,31375"
-)
-tg (CPTG
-uid 845,0
-ps "CptPortTextPlaceStrategy"
-stg "RightVerticalLayoutStrategy"
-f (Text
-uid 846,0
-va (VaSet
-font "Verdana,12,0"
-)
-xt "111200,30300,118000,31700"
-st "o_txd_en"
-ju 2
-blo "118000,31500"
-)
-)
-thePort (LogicalPort
-lang 11
-m 1
-decl (Decl
-n "o_txd_en"
-t "std_ulogic"
-o 89
-suid 8,0
-)
-)
-)
-]
-shape (Rectangle
-uid 848,0
-va (VaSet
-vasetType 1
-fg "0,65535,0"
-lineColor "0,32896,0"
-lineWidth 2
-)
-xt "98000,27000,119000,41000"
-)
-oxt "15000,13000,36000,27000"
-ttg (MlTextGroup
-uid 849,0
-ps "CenterOffsetStrategy"
-stg "VerticalLayoutStrategy"
-textVec [
-*53 (Text
-uid 850,0
-va (VaSet
-font "Verdana,9,1"
-)
-xt "85200,41300,88900,42500"
-st "RS232"
-blo "85200,42300"
-tm "BdLibraryNameMgr"
-)
-*54 (Text
-uid 851,0
-va (VaSet
-font "Verdana,9,1"
-)
-xt "85200,42500,97800,43700"
-st "serialPortTransmitter"
-blo "85200,43500"
-tm "CptNameMgr"
-)
-*55 (Text
-uid 852,0
-va (VaSet
-font "Verdana,9,1"
-)
-xt "85200,43700,90700,44900"
-st "U_rsTrans"
-blo "85200,44700"
-tm "InstanceNameMgr"
-)
-]
-)
-ga (GenericAssociation
-uid 853,0
-ps "EdgeToEdgeStrategy"
-matrix (Matrix
-uid 854,0
-text (MLText
-uid 855,0
-va (VaSet
-font "Courier New,8,0"
-)
-xt "79000,46400,145000,52000"
-st "g_BAUD_RATE_DIVIDER = c_BAUDRATE_DIVIDER     ( positive   ) --Clock divider to reach baudrate of one bit. At least 2.           
-g_DATA_BIT_NB       = 8                      ( positive   ) --Number of data bits per frame. From 5 to 9.                       
-g_LSB_FIRST         = '1'                    ( std_ulogic ) --If should send data with LSb first.                               
-g_USE_PARITY        = '1'                    ( std_ulogic ) --If adds a parity bit.                                             
-g_PARITY_IS_EVEN    = '1'                    ( std_ulogic ) --If parity enabled, select if the parity bit is EVEN ('1') or ODD. 
-g_STOP_BITS         = 1.0                    ( real       ) --Number of stop bits - 1.0, 1.5 or 2.0.                            
-g_IDLE_STATE        = '1'                    ( std_ulogic ) --Idle state for Tx/Rx when not in action                           
-"
-)
-header ""
-)
-elements [
-(GiElement
-name "g_BAUD_RATE_DIVIDER"
-type "positive"
-value "c_BAUDRATE_DIVIDER "
-e "Clock divider to reach baudrate of one bit. At least 2."
-)
-(GiElement
-name "g_DATA_BIT_NB"
-type "positive"
-value "8"
-e "Number of data bits per frame. From 5 to 9."
-)
-(GiElement
-name "g_LSB_FIRST"
-type "std_ulogic"
-value "'1'"
-e "If should send data with LSb first."
-)
-(GiElement
-name "g_USE_PARITY"
-type "std_ulogic"
-value "'1'"
-e "If adds a parity bit."
-)
-(GiElement
-name "g_PARITY_IS_EVEN"
-type "std_ulogic"
-value "'1'"
-e "If parity enabled, select if the parity bit is EVEN ('1') or ODD."
-)
-(GiElement
-name "g_STOP_BITS"
-type "real"
-value "1.0"
-e "Number of stop bits - 1.0, 1.5 or 2.0."
-)
-(GiElement
-name "g_IDLE_STATE"
-type "std_ulogic"
-value "'1'"
-e "Idle state for Tx/Rx when not in action"
-)
-]
-)
-viewicon (ZoomableIcon
-uid 856,0
-sl 0
-va (VaSet
-vasetType 1
-fg "49152,49152,49152"
-)
-xt "98250,39250,99750,40750"
-iconName "VhdlFileViewIcon.png"
-iconMaskName "VhdlFileViewIcon.msk"
-ftype 10
-)
-viewiconposition 0
-portVis (PortSigDisplay
-sTC 0
-sF 0
-)
-archFileType "UNKNOWN"
-)
-*56 (SaComponent
-uid 897,0
-optionalChildren [
-*57 (CptPort
-uid 857,0
-ps "OnEdgeStrategy"
-shape (Triangle
-uid 858,0
+uid 1069,0
 ro 90
 va (VaSet
 vasetType 1
@@ -1956,11 +1567,11 @@ fg "0,65535,0"
 xt "250,33625,1000,34375"
 )
 tg (CPTG
-uid 859,0
+uid 1070,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 860,0
+uid 1071,0
 va (VaSet
 font "Verdana,12,0"
 )
@@ -1975,15 +1586,14 @@ decl (Decl
 n "i_clk"
 t "std_ulogic"
 o 85
-suid 5,0
 )
 )
 )
-*58 (CptPort
-uid 861,0
+*46 (CptPort
+uid 1072,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 862,0
+uid 1073,0
 ro 90
 va (VaSet
 vasetType 1
@@ -1992,11 +1602,11 @@ fg "0,65535,0"
 xt "250,35625,1000,36375"
 )
 tg (CPTG
-uid 863,0
+uid 1074,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 864,0
+uid 1075,0
 va (VaSet
 font "Verdana,12,0"
 )
@@ -2011,15 +1621,14 @@ decl (Decl
 n "i_rst"
 t "std_ulogic"
 o 86
-suid 6,0
 )
 )
 )
-*59 (CptPort
-uid 865,0
+*47 (CptPort
+uid 1076,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 866,0
+uid 1077,0
 ro 90
 va (VaSet
 vasetType 1
@@ -2028,11 +1637,11 @@ fg "0,65535,0"
 xt "250,26625,1000,27375"
 )
 tg (CPTG
-uid 867,0
+uid 1078,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 868,0
+uid 1079,0
 va (VaSet
 font "Verdana,12,0"
 )
@@ -2047,15 +1656,14 @@ decl (Decl
 n "i_rxd"
 t "std_ulogic"
 o 83
-suid 7,0
 )
 )
 )
-*60 (CptPort
-uid 869,0
+*48 (CptPort
+uid 1080,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 870,0
+uid 1081,0
 ro 90
 va (VaSet
 vasetType 1
@@ -2064,11 +1672,11 @@ fg "0,65535,0"
 xt "250,28625,1000,29375"
 )
 tg (CPTG
-uid 871,0
+uid 1082,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 872,0
+uid 1083,0
 va (VaSet
 font "Verdana,12,0"
 )
@@ -2083,15 +1691,14 @@ decl (Decl
 n "i_rxd_en"
 t "std_ulogic"
 o 84
-suid 8,0
 )
 )
 )
-*61 (CptPort
-uid 873,0
+*49 (CptPort
+uid 1084,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 874,0
+uid 1085,0
 ro 90
 va (VaSet
 vasetType 1
@@ -2100,11 +1707,11 @@ fg "0,65535,0"
 xt "28000,26625,28750,27375"
 )
 tg (CPTG
-uid 875,0
+uid 1086,0
 ps "CptPortTextPlaceStrategy"
 stg "RightVerticalLayoutStrategy"
 f (Text
-uid 876,0
+uid 1087,0
 va (VaSet
 font "Verdana,12,0"
 )
@@ -2121,15 +1728,14 @@ n "o_byte"
 t "std_ulogic_vector"
 b "(g_DATA_BIT_NB-1 DOWNTO 0)"
 o 80
-suid 9,0
 )
 )
 )
-*62 (CptPort
-uid 877,0
+*50 (CptPort
+uid 1088,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 878,0
+uid 1089,0
 ro 90
 va (VaSet
 vasetType 1
@@ -2138,11 +1744,11 @@ fg "0,65535,0"
 xt "28000,28625,28750,29375"
 )
 tg (CPTG
-uid 879,0
+uid 1090,0
 ps "CptPortTextPlaceStrategy"
 stg "RightVerticalLayoutStrategy"
 f (Text
-uid 880,0
+uid 1091,0
 va (VaSet
 font "Verdana,12,0"
 )
@@ -2158,15 +1764,14 @@ decl (Decl
 n "o_byte_received"
 t "std_ulogic"
 o 81
-suid 10,0
 )
 )
 )
-*63 (CptPort
-uid 881,0
+*51 (CptPort
+uid 1092,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 882,0
+uid 1093,0
 va (VaSet
 vasetType 1
 fg "0,65535,0"
@@ -2174,11 +1779,11 @@ fg "0,65535,0"
 xt "10625,25250,11375,26000"
 )
 tg (CPTG
-uid 883,0
+uid 1094,0
 ps "CptPortTextPlaceStrategy"
 stg "RightVerticalLayoutStrategy"
 f (Text
-uid 884,0
+uid 1095,0
 ro 270
 va (VaSet
 font "Verdana,12,0"
@@ -2196,15 +1801,14 @@ decl (Decl
 n "o_frame_error"
 t "std_ulogic"
 o 87
-suid 11,0
 )
 )
 )
-*64 (CptPort
-uid 885,0
+*52 (CptPort
+uid 1096,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 886,0
+uid 1097,0
 ro 90
 va (VaSet
 vasetType 1
@@ -2213,11 +1817,11 @@ fg "0,65535,0"
 xt "28000,32625,28750,33375"
 )
 tg (CPTG
-uid 887,0
+uid 1098,0
 ps "CptPortTextPlaceStrategy"
 stg "RightVerticalLayoutStrategy"
 f (Text
-uid 888,0
+uid 1099,0
 va (VaSet
 font "Verdana,12,0"
 )
@@ -2234,15 +1838,14 @@ decl (Decl
 n "o_is_receiving"
 t "std_ulogic"
 o 89
-suid 12,0
 )
 )
 )
-*65 (CptPort
-uid 889,0
+*53 (CptPort
+uid 1100,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 890,0
+uid 1101,0
 va (VaSet
 vasetType 1
 fg "0,65535,0"
@@ -2250,11 +1853,11 @@ fg "0,65535,0"
 xt "12625,25250,13375,26000"
 )
 tg (CPTG
-uid 891,0
+uid 1102,0
 ps "CptPortTextPlaceStrategy"
 stg "RightVerticalLayoutStrategy"
 f (Text
-uid 892,0
+uid 1103,0
 ro 270
 va (VaSet
 font "Verdana,12,0"
@@ -2272,15 +1875,14 @@ decl (Decl
 n "o_parity_error"
 t "std_ulogic"
 o 88
-suid 13,0
 )
 )
 )
-*66 (CptPort
-uid 893,0
+*54 (CptPort
+uid 1104,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 894,0
+uid 1105,0
 va (VaSet
 vasetType 1
 fg "0,65535,0"
@@ -2288,11 +1890,11 @@ fg "0,65535,0"
 xt "14625,25250,15375,26000"
 )
 tg (CPTG
-uid 895,0
+uid 1106,0
 ps "CptPortTextPlaceStrategy"
 stg "RightVerticalLayoutStrategy"
 f (Text
-uid 896,0
+uid 1107,0
 ro 270
 va (VaSet
 font "Verdana,12,0"
@@ -2310,13 +1912,12 @@ decl (Decl
 n "o_illegalstate_error"
 t "std_ulogic"
 o 10
-suid 14,0
 )
 )
 )
 ]
 shape (Rectangle
-uid 898,0
+uid 1059,0
 va (VaSet
 vasetType 1
 fg "0,65535,0"
@@ -2327,61 +1928,60 @@ xt "1000,26000,28000,39000"
 )
 oxt "34000,25000,61000,38000"
 ttg (MlTextGroup
-uid 899,0
+uid 1060,0
 ps "CenterOffsetStrategy"
 stg "VerticalLayoutStrategy"
 textVec [
-*67 (Text
-uid 900,0
+*55 (Text
+uid 1061,0
 va (VaSet
 font "Verdana,9,1"
 )
-xt "-7200,42300,-3500,43500"
+xt "-3200,39300,500,40500"
 st "RS232"
-blo "-7200,43300"
+blo "-3200,40300"
 tm "BdLibraryNameMgr"
 )
-*68 (Text
-uid 901,0
+*56 (Text
+uid 1062,0
 va (VaSet
 font "Verdana,9,1"
 )
-xt "-7200,43500,3200,44700"
+xt "-3200,40500,7200,41700"
 st "serialPortReceiver"
-blo "-7200,44500"
+blo "-3200,41500"
 tm "CptNameMgr"
 )
-*69 (Text
-uid 902,0
+*57 (Text
+uid 1063,0
 va (VaSet
 font "Verdana,9,1"
 )
-xt "-7200,44700,-2600,45900"
+xt "-3200,41700,1400,42900"
 st "U_rsRec"
-blo "-7200,45700"
+blo "-3200,42700"
 tm "InstanceNameMgr"
 )
 ]
 )
 ga (GenericAssociation
-uid 903,0
+uid 1064,0
 ps "EdgeToEdgeStrategy"
 matrix (Matrix
-uid 904,0
+uid 1065,0
 text (MLText
-uid 905,0
+uid 1066,0
 va (VaSet
 font "Courier New,8,0"
 )
-xt "-4000,48400,74500,54000"
-st "g_BAUD_RATE_DIVIDER = c_BAUDRATE_DIVIDER     ( positive   ) --Clock divider to reach baudrate of one bit. At least 4 to triple sample the incoming data. 
-g_DATA_BIT_NB       = 8                      ( positive   ) --Number of data bits per frame. From 5 to 9.                                                
-g_LSB_FIRST         = '1'                    ( std_ulogic ) --If should send data with LSb first.                                                        
-g_USE_PARITY        = '1'                    ( std_ulogic ) --If adds a parity bit.                                                                      
-g_PARITY_IS_EVEN    = '1'                    ( std_ulogic ) --If parity enabled, select if the parity bit is EVEN ('1') or ODD.                          
-g_STOP_BITS         = 1.0                    ( real       ) --Number of stop bits - 1.0, 1.5 or 2.0.                                                     
-g_IDLE_STATE        = '1'                    ( std_ulogic ) --Idle state for Tx/Rx when not in action                                                    
-"
+xt "-10000,46400,80500,52000"
+st "g_BAUD_RATE_DIVIDER = integer(clockFrequency/rs232BaudRate + 0.5)    ( positive   ) --Clock divider to reach baudrate of one bit. At least 4 to triple sample the incoming data. 
+g_DATA_BIT_NB       = rs232BitNb                                     ( positive   ) --Number of data bits per frame. From 5 to 9.                                                
+g_LSB_FIRST         = c_LSB_FIRST                                    ( std_ulogic ) --If should send data with LSb first.                                                        
+g_USE_PARITY        = c_USE_PARITY                                   ( std_ulogic ) --If adds a parity bit.                                                                      
+g_PARITY_IS_EVEN    = c_PARITY_IS_EVEN                               ( std_ulogic ) --If parity enabled, select if the parity bit is EVEN ('1') or ODD.                          
+g_STOP_BITS         = c_STOP_BITS                                    ( real       ) --Number of stop bits - 1.0, 1.5 or 2.0.                                                     
+g_IDLE_STATE        = '1'                                            ( std_ulogic ) --Idle state for Tx/Rx when not in action                                                    "
 )
 header ""
 )
@@ -2389,37 +1989,37 @@ elements [
 (GiElement
 name "g_BAUD_RATE_DIVIDER"
 type "positive"
-value "c_BAUDRATE_DIVIDER "
+value "integer(clockFrequency/rs232BaudRate + 0.5)"
 e "Clock divider to reach baudrate of one bit. At least 4 to triple sample the incoming data."
 )
 (GiElement
 name "g_DATA_BIT_NB"
 type "positive"
-value "8"
+value "rs232BitNb"
 e "Number of data bits per frame. From 5 to 9."
 )
 (GiElement
 name "g_LSB_FIRST"
 type "std_ulogic"
-value "'1'"
+value "c_LSB_FIRST"
 e "If should send data with LSb first."
 )
 (GiElement
 name "g_USE_PARITY"
 type "std_ulogic"
-value "'1'"
+value "c_USE_PARITY"
 e "If adds a parity bit."
 )
 (GiElement
 name "g_PARITY_IS_EVEN"
 type "std_ulogic"
-value "'1'"
+value "c_PARITY_IS_EVEN"
 e "If parity enabled, select if the parity bit is EVEN ('1') or ODD."
 )
 (GiElement
 name "g_STOP_BITS"
 type "real"
-value "1.0"
+value "c_STOP_BITS"
 e "Number of stop bits - 1.0, 1.5 or 2.0."
 )
 (GiElement
@@ -2431,7 +2031,7 @@ e "Idle state for Tx/Rx when not in action"
 ]
 )
 viewicon (ZoomableIcon
-uid 906,0
+uid 1067,0
 sl 0
 va (VaSet
 vasetType 1
@@ -2449,14 +2049,440 @@ sF 0
 )
 archFileType "UNKNOWN"
 )
-*70 (SaComponent
-uid 947,0
+*58 (SaComponent
+uid 1108,0
 optionalChildren [
-*71 (CptPort
-uid 907,0
+*59 (CptPort
+uid 1118,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 908,0
+uid 1119,0
+ro 90
+va (VaSet
+vasetType 1
+fg "0,65535,0"
+)
+xt "97250,35625,98000,36375"
+)
+tg (CPTG
+uid 1120,0
+ps "CptPortTextPlaceStrategy"
+stg "VerticalLayoutStrategy"
+f (Text
+uid 1121,0
+va (VaSet
+font "Verdana,12,0"
+)
+xt "99000,35300,102500,36700"
+st "i_clk"
+blo "99000,36500"
+)
+)
+thePort (LogicalPort
+lang 11
+decl (Decl
+n "i_clk"
+t "std_ulogic"
+o 83
+)
+)
+)
+*60 (CptPort
+uid 1122,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 1123,0
+ro 90
+va (VaSet
+vasetType 1
+fg "0,65535,0"
+)
+xt "97250,28625,98000,29375"
+)
+tg (CPTG
+uid 1124,0
+ps "CptPortTextPlaceStrategy"
+stg "VerticalLayoutStrategy"
+f (Text
+uid 1125,0
+va (VaSet
+font "Verdana,12,0"
+)
+xt "99000,28300,103800,29700"
+st "i_data"
+blo "99000,29500"
+)
+)
+thePort (LogicalPort
+lang 11
+decl (Decl
+n "i_data"
+t "std_ulogic_vector"
+b "(g_DATA_BIT_NB-1 DOWNTO 0)"
+o 85
+)
+)
+)
+*61 (CptPort
+uid 1126,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 1127,0
+ro 90
+va (VaSet
+vasetType 1
+fg "0,65535,0"
+)
+xt "97250,37625,98000,38375"
+)
+tg (CPTG
+uid 1128,0
+ps "CptPortTextPlaceStrategy"
+stg "VerticalLayoutStrategy"
+f (Text
+uid 1129,0
+va (VaSet
+font "Verdana,12,0"
+)
+xt "99000,37300,102600,38700"
+st "i_rst"
+blo "99000,38500"
+)
+)
+thePort (LogicalPort
+lang 11
+decl (Decl
+n "i_rst"
+t "std_ulogic"
+o 84
+)
+)
+)
+*62 (CptPort
+uid 1130,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 1131,0
+ro 90
+va (VaSet
+vasetType 1
+fg "0,65535,0"
+)
+xt "97250,30625,98000,31375"
+)
+tg (CPTG
+uid 1132,0
+ps "CptPortTextPlaceStrategy"
+stg "VerticalLayoutStrategy"
+f (Text
+uid 1133,0
+va (VaSet
+font "Verdana,12,0"
+)
+xt "99000,30300,104000,31700"
+st "i_send"
+blo "99000,31500"
+)
+)
+thePort (LogicalPort
+lang 11
+decl (Decl
+n "i_send"
+t "std_ulogic"
+o 86
+)
+)
+)
+*63 (CptPort
+uid 1134,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 1135,0
+va (VaSet
+vasetType 1
+fg "0,65535,0"
+)
+xt "106625,26250,107375,27000"
+)
+tg (CPTG
+uid 1136,0
+ps "CptPortTextPlaceStrategy"
+stg "RightVerticalLayoutStrategy"
+f (Text
+uid 1137,0
+ro 270
+va (VaSet
+font "Verdana,12,0"
+)
+xt "106300,28000,107700,42800"
+st "o_illegalstate_error"
+ju 2
+blo "107500,28000"
+)
+)
+thePort (LogicalPort
+lang 11
+m 1
+decl (Decl
+n "o_illegalstate_error"
+t "std_ulogic"
+o 90
+)
+)
+)
+*64 (CptPort
+uid 1138,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 1139,0
+ro 90
+va (VaSet
+vasetType 1
+fg "0,65535,0"
+)
+xt "119000,34625,119750,35375"
+)
+tg (CPTG
+uid 1140,0
+ps "CptPortTextPlaceStrategy"
+stg "RightVerticalLayoutStrategy"
+f (Text
+uid 1141,0
+va (VaSet
+font "Verdana,12,0"
+)
+xt "108000,34300,118000,35700"
+st "o_is_sending"
+ju 2
+blo "118000,35500"
+)
+)
+thePort (LogicalPort
+lang 11
+m 1
+decl (Decl
+n "o_is_sending"
+t "std_ulogic"
+o 87
+)
+)
+)
+*65 (CptPort
+uid 1142,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 1143,0
+ro 90
+va (VaSet
+vasetType 1
+fg "0,65535,0"
+)
+xt "119000,28625,119750,29375"
+)
+tg (CPTG
+uid 1144,0
+ps "CptPortTextPlaceStrategy"
+stg "RightVerticalLayoutStrategy"
+f (Text
+uid 1145,0
+va (VaSet
+font "Verdana,12,0"
+)
+xt "113600,28300,118000,29700"
+st "o_txd"
+ju 2
+blo "118000,29500"
+)
+)
+thePort (LogicalPort
+lang 11
+m 1
+decl (Decl
+n "o_txd"
+t "std_ulogic"
+o 88
+)
+)
+)
+*66 (CptPort
+uid 1146,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 1147,0
+ro 90
+va (VaSet
+vasetType 1
+fg "0,65535,0"
+)
+xt "119000,30625,119750,31375"
+)
+tg (CPTG
+uid 1148,0
+ps "CptPortTextPlaceStrategy"
+stg "RightVerticalLayoutStrategy"
+f (Text
+uid 1149,0
+va (VaSet
+font "Verdana,12,0"
+)
+xt "111200,30300,118000,31700"
+st "o_txd_en"
+ju 2
+blo "118000,31500"
+)
+)
+thePort (LogicalPort
+lang 11
+m 1
+decl (Decl
+n "o_txd_en"
+t "std_ulogic"
+o 89
+)
+)
+)
+]
+shape (Rectangle
+uid 1109,0
+va (VaSet
+vasetType 1
+fg "0,65535,0"
+lineColor "0,32896,0"
+lineWidth 2
+)
+xt "98000,27000,119000,41000"
+)
+oxt "15000,13000,36000,27000"
+ttg (MlTextGroup
+uid 1110,0
+ps "CenterOffsetStrategy"
+stg "VerticalLayoutStrategy"
+textVec [
+*67 (Text
+uid 1111,0
+va (VaSet
+font "Verdana,9,1"
+)
+xt "92200,41300,95900,42500"
+st "RS232"
+blo "92200,42300"
+tm "BdLibraryNameMgr"
+)
+*68 (Text
+uid 1112,0
+va (VaSet
+font "Verdana,9,1"
+)
+xt "92200,42500,104800,43700"
+st "serialPortTransmitter"
+blo "92200,43500"
+tm "CptNameMgr"
+)
+*69 (Text
+uid 1113,0
+va (VaSet
+font "Verdana,9,1"
+)
+xt "92200,43700,97700,44900"
+st "U_rsTrans"
+blo "92200,44700"
+tm "InstanceNameMgr"
+)
+]
+)
+ga (GenericAssociation
+uid 1114,0
+ps "EdgeToEdgeStrategy"
+matrix (Matrix
+uid 1115,0
+text (MLText
+uid 1116,0
+va (VaSet
+font "Courier New,8,0"
+)
+xt "74000,45400,152000,51000"
+st "g_BAUD_RATE_DIVIDER = integer(clockFrequency/rs232BaudRate + 0.5)    ( positive   ) --Clock divider to reach baudrate of one bit. At least 2.           
+g_DATA_BIT_NB       = rs232BitNb                                     ( positive   ) --Number of data bits per frame. From 5 to 9.                       
+g_LSB_FIRST         = c_LSB_FIRST                                    ( std_ulogic ) --If should send data with LSb first.                               
+g_USE_PARITY        = c_USE_PARITY                                   ( std_ulogic ) --If adds a parity bit.                                             
+g_PARITY_IS_EVEN    = c_PARITY_IS_EVEN                               ( std_ulogic ) --If parity enabled, select if the parity bit is EVEN ('1') or ODD. 
+g_STOP_BITS         = c_STOP_BITS                                    ( real       ) --Number of stop bits - 1.0, 1.5 or 2.0.                            
+g_IDLE_STATE        = '1'                                            ( std_ulogic ) --Idle state for Tx/Rx when not in action                           "
+)
+header ""
+)
+elements [
+(GiElement
+name "g_BAUD_RATE_DIVIDER"
+type "positive"
+value "integer(clockFrequency/rs232BaudRate + 0.5)"
+e "Clock divider to reach baudrate of one bit. At least 2."
+)
+(GiElement
+name "g_DATA_BIT_NB"
+type "positive"
+value "rs232BitNb"
+e "Number of data bits per frame. From 5 to 9."
+)
+(GiElement
+name "g_LSB_FIRST"
+type "std_ulogic"
+value "c_LSB_FIRST"
+e "If should send data with LSb first."
+)
+(GiElement
+name "g_USE_PARITY"
+type "std_ulogic"
+value "c_USE_PARITY"
+e "If adds a parity bit."
+)
+(GiElement
+name "g_PARITY_IS_EVEN"
+type "std_ulogic"
+value "c_PARITY_IS_EVEN"
+e "If parity enabled, select if the parity bit is EVEN ('1') or ODD."
+)
+(GiElement
+name "g_STOP_BITS"
+type "real"
+value "c_STOP_BITS"
+e "Number of stop bits - 1.0, 1.5 or 2.0."
+)
+(GiElement
+name "g_IDLE_STATE"
+type "std_ulogic"
+value "'1'"
+e "Idle state for Tx/Rx when not in action"
+)
+]
+)
+viewicon (ZoomableIcon
+uid 1117,0
+sl 0
+va (VaSet
+vasetType 1
+fg "49152,49152,49152"
+)
+xt "98250,39250,99750,40750"
+iconName "VhdlFileViewIcon.png"
+iconMaskName "VhdlFileViewIcon.msk"
+ftype 10
+)
+viewiconposition 0
+portVis (PortSigDisplay
+sTC 0
+sF 0
+)
+archFileType "UNKNOWN"
+)
+*70 (SaComponent
+uid 1150,0
+optionalChildren [
+*71 (CptPort
+uid 1160,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 1161,0
 ro 90
 va (VaSet
 vasetType 1
@@ -2465,11 +2491,11 @@ fg "0,65535,0"
 xt "149250,35625,150000,36375"
 )
 tg (CPTG
-uid 909,0
+uid 1162,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 910,0
+uid 1163,0
 va (VaSet
 font "Verdana,12,0"
 )
@@ -2484,15 +2510,14 @@ decl (Decl
 n "i_clk"
 t "std_ulogic"
 o 85
-suid 5,0
 )
 )
 )
 *72 (CptPort
-uid 911,0
+uid 1164,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 912,0
+uid 1165,0
 ro 90
 va (VaSet
 vasetType 1
@@ -2501,11 +2526,11 @@ fg "0,65535,0"
 xt "149250,37625,150000,38375"
 )
 tg (CPTG
-uid 913,0
+uid 1166,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 914,0
+uid 1167,0
 va (VaSet
 font "Verdana,12,0"
 )
@@ -2520,15 +2545,14 @@ decl (Decl
 n "i_rst"
 t "std_ulogic"
 o 86
-suid 6,0
 )
 )
 )
 *73 (CptPort
-uid 915,0
+uid 1168,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 916,0
+uid 1169,0
 ro 90
 va (VaSet
 vasetType 1
@@ -2537,11 +2561,11 @@ fg "0,65535,0"
 xt "149250,28625,150000,29375"
 )
 tg (CPTG
-uid 917,0
+uid 1170,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 918,0
+uid 1171,0
 va (VaSet
 font "Verdana,12,0"
 )
@@ -2556,15 +2580,14 @@ decl (Decl
 n "i_rxd"
 t "std_ulogic"
 o 83
-suid 7,0
 )
 )
 )
 *74 (CptPort
-uid 919,0
+uid 1172,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 920,0
+uid 1173,0
 ro 90
 va (VaSet
 vasetType 1
@@ -2573,11 +2596,11 @@ fg "0,65535,0"
 xt "149250,30625,150000,31375"
 )
 tg (CPTG
-uid 921,0
+uid 1174,0
 ps "CptPortTextPlaceStrategy"
 stg "VerticalLayoutStrategy"
 f (Text
-uid 922,0
+uid 1175,0
 va (VaSet
 font "Verdana,12,0"
 )
@@ -2592,15 +2615,14 @@ decl (Decl
 n "i_rxd_en"
 t "std_ulogic"
 o 84
-suid 8,0
 )
 )
 )
 *75 (CptPort
-uid 923,0
+uid 1176,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 924,0
+uid 1177,0
 ro 90
 va (VaSet
 vasetType 1
@@ -2609,11 +2631,11 @@ fg "0,65535,0"
 xt "177000,28625,177750,29375"
 )
 tg (CPTG
-uid 925,0
+uid 1178,0
 ps "CptPortTextPlaceStrategy"
 stg "RightVerticalLayoutStrategy"
 f (Text
-uid 926,0
+uid 1179,0
 va (VaSet
 font "Verdana,12,0"
 )
@@ -2630,15 +2652,14 @@ n "o_byte"
 t "std_ulogic_vector"
 b "(g_DATA_BIT_NB-1 DOWNTO 0)"
 o 80
-suid 9,0
 )
 )
 )
 *76 (CptPort
-uid 927,0
+uid 1180,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 928,0
+uid 1181,0
 ro 90
 va (VaSet
 vasetType 1
@@ -2647,11 +2668,11 @@ fg "0,65535,0"
 xt "177000,30625,177750,31375"
 )
 tg (CPTG
-uid 929,0
+uid 1182,0
 ps "CptPortTextPlaceStrategy"
 stg "RightVerticalLayoutStrategy"
 f (Text
-uid 930,0
+uid 1183,0
 va (VaSet
 font "Verdana,12,0"
 )
@@ -2667,15 +2688,14 @@ decl (Decl
 n "o_byte_received"
 t "std_ulogic"
 o 81
-suid 10,0
 )
 )
 )
 *77 (CptPort
-uid 931,0
+uid 1184,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 932,0
+uid 1185,0
 va (VaSet
 vasetType 1
 fg "0,65535,0"
@@ -2683,11 +2703,11 @@ fg "0,65535,0"
 xt "159625,27250,160375,28000"
 )
 tg (CPTG
-uid 933,0
+uid 1186,0
 ps "CptPortTextPlaceStrategy"
 stg "RightVerticalLayoutStrategy"
 f (Text
-uid 934,0
+uid 1187,0
 ro 270
 va (VaSet
 font "Verdana,12,0"
@@ -2705,15 +2725,14 @@ decl (Decl
 n "o_frame_error"
 t "std_ulogic"
 o 87
-suid 11,0
 )
 )
 )
 *78 (CptPort
-uid 935,0
+uid 1188,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 936,0
+uid 1189,0
 ro 90
 va (VaSet
 vasetType 1
@@ -2722,11 +2741,11 @@ fg "0,65535,0"
 xt "177000,34625,177750,35375"
 )
 tg (CPTG
-uid 937,0
+uid 1190,0
 ps "CptPortTextPlaceStrategy"
 stg "RightVerticalLayoutStrategy"
 f (Text
-uid 938,0
+uid 1191,0
 va (VaSet
 font "Verdana,12,0"
 )
@@ -2743,15 +2762,14 @@ decl (Decl
 n "o_is_receiving"
 t "std_ulogic"
 o 89
-suid 12,0
 )
 )
 )
 *79 (CptPort
-uid 939,0
+uid 1192,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 940,0
+uid 1193,0
 va (VaSet
 vasetType 1
 fg "0,65535,0"
@@ -2759,11 +2777,11 @@ fg "0,65535,0"
 xt "161625,27250,162375,28000"
 )
 tg (CPTG
-uid 941,0
+uid 1194,0
 ps "CptPortTextPlaceStrategy"
 stg "RightVerticalLayoutStrategy"
 f (Text
-uid 942,0
+uid 1195,0
 ro 270
 va (VaSet
 font "Verdana,12,0"
@@ -2781,15 +2799,14 @@ decl (Decl
 n "o_parity_error"
 t "std_ulogic"
 o 88
-suid 13,0
 )
 )
 )
 *80 (CptPort
-uid 943,0
+uid 1196,0
 ps "OnEdgeStrategy"
 shape (Triangle
-uid 944,0
+uid 1197,0
 va (VaSet
 vasetType 1
 fg "0,65535,0"
@@ -2797,11 +2814,11 @@ fg "0,65535,0"
 xt "163625,27250,164375,28000"
 )
 tg (CPTG
-uid 945,0
+uid 1198,0
 ps "CptPortTextPlaceStrategy"
 stg "RightVerticalLayoutStrategy"
 f (Text
-uid 946,0
+uid 1199,0
 ro 270
 va (VaSet
 font "Verdana,12,0"
@@ -2819,13 +2836,12 @@ decl (Decl
 n "o_illegalstate_error"
 t "std_ulogic"
 o 10
-suid 14,0
 )
 )
 )
 ]
 shape (Rectangle
-uid 948,0
+uid 1151,0
 va (VaSet
 vasetType 1
 fg "0,65535,0"
@@ -2836,61 +2852,60 @@ xt "150000,28000,177000,41000"
 )
 oxt "34000,25000,61000,38000"
 ttg (MlTextGroup
-uid 949,0
+uid 1152,0
 ps "CenterOffsetStrategy"
 stg "VerticalLayoutStrategy"
 textVec [
 *81 (Text
-uid 950,0
+uid 1153,0
 va (VaSet
 font "Verdana,9,1"
 )
-xt "143800,41300,147500,42500"
+xt "145800,41300,149500,42500"
 st "RS232"
-blo "143800,42300"
+blo "145800,42300"
 tm "BdLibraryNameMgr"
 )
 *82 (Text
-uid 951,0
+uid 1154,0
 va (VaSet
 font "Verdana,9,1"
 )
-xt "143800,42500,154200,43700"
+xt "145800,42500,156200,43700"
 st "serialPortReceiver"
-blo "143800,43500"
+blo "145800,43500"
 tm "CptNameMgr"
 )
 *83 (Text
-uid 952,0
+uid 1155,0
 va (VaSet
 font "Verdana,9,1"
 )
-xt "143800,43700,149000,44900"
+xt "145800,43700,151000,44900"
 st "U_rsRec1"
-blo "143800,44700"
+blo "145800,44700"
 tm "InstanceNameMgr"
 )
 ]
 )
 ga (GenericAssociation
-uid 953,0
+uid 1156,0
 ps "EdgeToEdgeStrategy"
 matrix (Matrix
-uid 954,0
+uid 1157,0
 text (MLText
-uid 955,0
+uid 1158,0
 va (VaSet
 font "Courier New,8,0"
 )
-xt "144000,46400,222500,52000"
-st "g_BAUD_RATE_DIVIDER = c_BAUDRATE_DIVIDER     ( positive   ) --Clock divider to reach baudrate of one bit. At least 4 to triple sample the incoming data. 
-g_DATA_BIT_NB       = 8                      ( positive   ) --Number of data bits per frame. From 5 to 9.                                                
-g_LSB_FIRST         = '1'                    ( std_ulogic ) --If should send data with LSb first.                                                        
-g_USE_PARITY        = '1'                    ( std_ulogic ) --If adds a parity bit.                                                                      
-g_PARITY_IS_EVEN    = '1'                    ( std_ulogic ) --If parity enabled, select if the parity bit is EVEN ('1') or ODD.                          
-g_STOP_BITS         = 1.0                    ( real       ) --Number of stop bits - 1.0, 1.5 or 2.0.                                                     
-g_IDLE_STATE        = '1'                    ( std_ulogic ) --Idle state for Tx/Rx when not in action                                                    
-"
+xt "144000,46400,234500,52000"
+st "g_BAUD_RATE_DIVIDER = integer(clockFrequency/rs232BaudRate + 0.5)    ( positive   ) --Clock divider to reach baudrate of one bit. At least 4 to triple sample the incoming data. 
+g_DATA_BIT_NB       = rs232BitNb                                     ( positive   ) --Number of data bits per frame. From 5 to 9.                                                
+g_LSB_FIRST         = c_LSB_FIRST                                    ( std_ulogic ) --If should send data with LSb first.                                                        
+g_USE_PARITY        = c_USE_PARITY                                   ( std_ulogic ) --If adds a parity bit.                                                                      
+g_PARITY_IS_EVEN    = c_PARITY_IS_EVEN                               ( std_ulogic ) --If parity enabled, select if the parity bit is EVEN ('1') or ODD.                          
+g_STOP_BITS         = c_STOP_BITS                                    ( real       ) --Number of stop bits - 1.0, 1.5 or 2.0.                                                     
+g_IDLE_STATE        = '1'                                            ( std_ulogic ) --Idle state for Tx/Rx when not in action                                                    "
 )
 header ""
 )
@@ -2898,37 +2913,37 @@ elements [
 (GiElement
 name "g_BAUD_RATE_DIVIDER"
 type "positive"
-value "c_BAUDRATE_DIVIDER "
+value "integer(clockFrequency/rs232BaudRate + 0.5)"
 e "Clock divider to reach baudrate of one bit. At least 4 to triple sample the incoming data."
 )
 (GiElement
 name "g_DATA_BIT_NB"
 type "positive"
-value "8"
+value "rs232BitNb"
 e "Number of data bits per frame. From 5 to 9."
 )
 (GiElement
 name "g_LSB_FIRST"
 type "std_ulogic"
-value "'1'"
+value "c_LSB_FIRST"
 e "If should send data with LSb first."
 )
 (GiElement
 name "g_USE_PARITY"
 type "std_ulogic"
-value "'1'"
+value "c_USE_PARITY"
 e "If adds a parity bit."
 )
 (GiElement
 name "g_PARITY_IS_EVEN"
 type "std_ulogic"
-value "'1'"
+value "c_PARITY_IS_EVEN"
 e "If parity enabled, select if the parity bit is EVEN ('1') or ODD."
 )
 (GiElement
 name "g_STOP_BITS"
 type "real"
-value "1.0"
+value "c_STOP_BITS"
 e "Number of stop bits - 1.0, 1.5 or 2.0."
 )
 (GiElement
@@ -2940,7 +2955,7 @@ e "Idle state for Tx/Rx when not in action"
 ]
 )
 viewicon (ZoomableIcon
-uid 956,0
+uid 1159,0
 sl 0
 va (VaSet
 vasetType 1
@@ -3025,7 +3040,7 @@ pts [
 ]
 )
 start &85
-end &48
+end &62
 sat 32
 eat 32
 stc 0
@@ -3076,7 +3091,7 @@ pts [
 "131000,57000"
 ]
 )
-start &50
+start &64
 end &37
 sat 32
 eat 1
@@ -3167,7 +3182,7 @@ pts [
 "136000,57000"
 ]
 )
-start &52
+start &66
 end &37
 sat 32
 eat 1
@@ -3206,7 +3221,7 @@ pts [
 ]
 )
 start &37
-end &57
+end &45
 sat 2
 eat 32
 stc 0
@@ -3243,7 +3258,7 @@ pts [
 "-16000,57000"
 ]
 )
-start &59
+start &47
 end &37
 sat 32
 eat 2
@@ -3282,7 +3297,7 @@ pts [
 ]
 )
 start &37
-end &58
+end &46
 sat 2
 eat 32
 stc 0
@@ -3342,7 +3357,7 @@ pts [
 "138000,57000"
 ]
 )
-start &51
+start &65
 end &37
 sat 32
 eat 1
@@ -3457,7 +3472,7 @@ pts [
 "97250,38000"
 ]
 )
-end &47
+end &61
 sat 16
 eat 32
 stc 0
@@ -3500,7 +3515,7 @@ pts [
 "97250,36000"
 ]
 )
-end &45
+end &59
 sat 16
 eat 32
 stc 0
@@ -3537,7 +3552,7 @@ pts [
 "42250,31000"
 ]
 )
-start &62
+start &50
 end &2
 sat 32
 eat 32
@@ -3552,9 +3567,9 @@ f (Text
 uid 483,0
 va (VaSet
 )
-xt "30750,27800,40450,29000"
+xt "32000,27800,41700,29000"
 st "o_byte_received"
-blo "30750,28800"
+blo "32000,28800"
 tm "WireNameMgr"
 )
 )
@@ -3628,7 +3643,7 @@ pts [
 "42250,27000"
 ]
 )
-start &61
+start &49
 end &7
 sat 32
 eat 32
@@ -3644,9 +3659,9 @@ f (Text
 uid 491,0
 va (VaSet
 )
-xt "30750,25800,36450,27000"
+xt "32000,25800,37700,27000"
 st "read_byte"
-blo "30750,26800"
+blo "32000,26800"
 tm "WireNameMgr"
 )
 )
@@ -3671,7 +3686,7 @@ pts [
 ]
 )
 start &5
-end &46
+end &60
 sat 32
 eat 32
 sty 1
@@ -3708,7 +3723,7 @@ pts [
 "-19000,27000"
 ]
 )
-start &60
+start &48
 end &27
 sat 32
 eat 32
@@ -4083,9 +4098,9 @@ tm "BdCompilerDirectivesTextMgr"
 ]
 associable 1
 )
-windowSize "-1920,-251,1,797"
-viewArea "-26500,-3600,226187,129534"
-cachedDiagramExtent "-23000,0,222500,71800"
+windowSize "-1928,-259,8,789"
+viewArea "-26788,-3805,241221,136162"
+cachedDiagramExtent "-23000,0,234500,74200"
 pageSetupInfo (PageSetupInfo
 ptrCmd ""
 toPrinter 1
@@ -4108,7 +4123,7 @@ exportStdPackageRefs 1
 )
 hasePageBreakOrigin 1
 pageBreakOrigin "-25000,0"
-lastUid 956,0
+lastUid 1301,0
 defaultCommentText (CommentText
 shape (Rectangle
 layer 0
@@ -5112,8 +5127,16 @@ uid 5,0
 va (VaSet
 font "Courier New,8,0"
 )
-xt "8000,4000,33000,4800"
-st "constant c_BAUDRATE_DIVIDER : positive := 868;"
+xt "8000,4000,32500,11200"
+st "constant clockFrequency: real := 66.0E6;
+
+constant rs232BaudRate: real := 115.2E3;
+constant rs232BitNb: positive := 8;
+
+constant c_LSB_FIRST : std_ulogic := '1';
+constant c_USE_PARITY : std_ulogic := '1';
+constant c_PARITY_IS_EVEN: std_ulogic := '1';
+constant c_STOP_BITS: real:= 1.0;"
 tm "BdDeclarativeTextMgr"
 )
 diagSignalLabel (Text
@@ -5121,9 +5144,9 @@ uid 6,0
 va (VaSet
 font "Verdana,9,1"
 )
-xt "6000,4800,15500,6000"
+xt "6000,11200,15500,12400"
 st "Diagram Signals:"
-blo "6000,5800"
+blo "6000,12200"
 )
 postUserLabel (Text
 uid 7,0

@@ -60,7 +60,7 @@ BEGIN
 
   process
     -- String which will be sent
-    variable send_str : string(1 to 3) := "hei";--"shthshsthsthsrtjjtujzikluol8stgaeuibweuibuiCF BUIefbhuiWBFBUIebuifbhUIFHERUHpruiopweFH890WG89gv9pG4789FG97U7THRWE79RH2GZR8029RG79PW2G78FG8ASGBDFZIGBU9PSEFhfhouihuioUOHBUOHUOHuohè";
+    variable send_str : string(1 to 15) := "Hello World 123";
   begin
 
     -- Default values
@@ -109,20 +109,30 @@ BEGIN
           lf & lf
         );
         write(output, separator);
-        rxd <= lvec_data_out(i);
+        if g_LSB_FIRST then
+          rxd <= lvec_data_out(i);
+        else
+          rxd <= lvec_data_out(7 - i);
+        end if;
         wait for c_BAUD_PERIOD;
       end loop;
 
       -- Send parity
-      subTestInfo <= pad("Send parity", subTestInfo'length);
-      write(output,
-        "[TB] Send parity" & lf &
-        "    at time " & integer'image(now/1 ns) & " ns" &
-        lf & lf
-      );
-      write(output, separator);
-      rxd <= xor lvec_data_out;
-      wait for c_BAUD_PERIOD;
+      if g_USE_PARITY = '1' then
+        subTestInfo <= pad("Send parity", subTestInfo'length);
+        write(output,
+          "[TB] Send parity" & lf &
+          "    at time " & integer'image(now/1 ns) & " ns" &
+          lf & lf
+        );
+        write(output, separator);
+        if g_PARITY_IS_EVEN = '1' then
+          rxd <= xor lvec_data_out;
+        else
+          rxd <= xnor lvec_data_out;
+        end if;
+        wait for c_BAUD_PERIOD;
+      end if;
 
       -- Stop
       subTestInfo <= pad("Send stop", subTestInfo'length);
@@ -164,13 +174,13 @@ BEGIN
     wait for 10 * clockPeriod;
     testInfo <= pad("Simulation End", testInfo'length);
     subTestInfo <= pad("Simulation End", subTestInfo'length);
-    wait for 10 * clockPeriod;
+    wait for 100 * clockPeriod;
     write(output,
       "[TB] Testbench end" & lf &
       "    at time " & integer'image(now/1 ns) & " ns" &
       lf & lf
     );
-    -- stop;
+    --stop;
     wait;
 
   end process;

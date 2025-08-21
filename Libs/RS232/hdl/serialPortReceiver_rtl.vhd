@@ -198,7 +198,7 @@ BEGIN
             else -- is last data bit / parity bit
               lvec_state <= ST_INDICATE_REC_COMPLETE;
               if g_USE_PARITY = '0' then
-                lvec_rx_shift_reg <= '0' & lvec_rx_shift_reg(lvec_rx_shift_reg'high downto 1); -- no parity
+                lvec_rx_shift_reg <= '0' & lsig_sampled_value & lvec_rx_shift_reg(lvec_rx_shift_reg'high downto 2); -- no parity
               end if;
             end if;
           end if;

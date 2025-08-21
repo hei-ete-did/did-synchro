@@ -52,15 +52,6 @@ mwi 0
 uid 1186,0
 )
 (Instance
-name "I_mon"
-duLibraryName "RS232_test"
-duName "uvmRs232Monitor"
-elements [
-]
-mwi 0
-uid 1321,0
-)
-(Instance
 name "I_driv"
 duLibraryName "RS232_test"
 duName "uvmRs232Driver"
@@ -68,6 +59,20 @@ elements [
 ]
 mwi 0
 uid 1486,0
+)
+(Instance
+name "I_mon"
+duLibraryName "RS232_test"
+duName "uvmRs232Monitor"
+elements [
+(GiElement
+name "reportStart"
+type "string"
+value "\"uart\""
+)
+]
+mwi 0
+uid 1604,0
 )
 ]
 libraryRefs [
@@ -130,7 +135,7 @@ value "C:\\dev\\Clearspace\\clearspace-fpga\\Libs\\Prefs\\..\\RS232_test\\hds\\u
 )
 (vvPair
 variable "date"
-value "17.04.2025"
+value "21.08.2025"
 )
 (vvPair
 variable "day"
@@ -142,7 +147,7 @@ value "jeudi"
 )
 (vvPair
 variable "dd"
-value "17"
+value "21"
 )
 (vvPair
 variable "designName"
@@ -174,7 +179,7 @@ value "Axam"
 )
 (vvPair
 variable "graphical_source_date"
-value "17.04.2025"
+value "21.08.2025"
 )
 (vvPair
 variable "graphical_source_group"
@@ -186,7 +191,7 @@ value "WE10628"
 )
 (vvPair
 variable "graphical_source_time"
-value "13:44:21"
+value "11:29:45"
 )
 (vvPair
 variable "group"
@@ -210,7 +215,7 @@ value "$SCRATCH_DIR/Libraries/RS232_test/work"
 )
 (vvPair
 variable "mm"
-value "04"
+value "08"
 )
 (vvPair
 variable "module_name"
@@ -218,11 +223,11 @@ value "uvmRs232AgentHw"
 )
 (vvPair
 variable "month"
-value "avr."
+value "août"
 )
 (vvPair
 variable "month_long"
-value "avril"
+value "août"
 )
 (vvPair
 variable "p"
@@ -302,7 +307,7 @@ value "struct"
 )
 (vvPair
 variable "time"
-value "13:44:21"
+value "11:29:45"
 )
 (vvPair
 variable "unit"
@@ -672,8 +677,9 @@ uid 456,0
 va (VaSet
 font "Verdana,8,0"
 )
-xt "2000,14600,29400,15600"
-st "SIGNAL driverTransaction  : string(1 TO ahbTransactionLength)"
+xt "2000,15400,29400,16400"
+st "SIGNAL driverTransaction  : string(1 TO ahbTransactionLength)
+"
 )
 )
 *13 (Net
@@ -690,8 +696,9 @@ uid 462,0
 va (VaSet
 font "Verdana,8,0"
 )
-xt "2000,15500,29900,16500"
-st "SIGNAL monitorTransaction : string(1 TO ahbTransactionLength)"
+xt "2000,16400,29900,17400"
+st "SIGNAL monitorTransaction : string(1 TO ahbTransactionLength)
+"
 )
 )
 *14 (Net
@@ -707,8 +714,9 @@ uid 1041,0
 va (VaSet
 font "Verdana,8,0"
 )
-xt "2000,13700,16100,14700"
-st "SIGNAL baudRate           : real"
+xt "2000,14400,16100,15400"
+st "SIGNAL baudRate           : real
+"
 )
 )
 *15 (Net
@@ -724,8 +732,9 @@ uid 1093,0
 va (VaSet
 font "Verdana,8,0"
 )
-xt "2000,9200,14800,10200"
-st "TxD                : std_uLogic"
+xt "2000,9400,14800,10400"
+st "TxD                : std_uLogic
+"
 )
 )
 *16 (PortIoIn
@@ -831,8 +840,9 @@ uid 1107,0
 va (VaSet
 font "Verdana,8,0"
 )
-xt "2000,10100,14900,11100"
-st "RxD                : std_uLogic"
+xt "2000,10400,14900,11400"
+st "RxD                : std_uLogic
+"
 )
 )
 *19 (SaComponent
@@ -1103,238 +1113,9 @@ sT 1
 archFileType "UNKNOWN"
 )
 *29 (SaComponent
-uid 1321,0
-optionalChildren [
-*30 (CptPort
-uid 1305,0
-ps "OnEdgeStrategy"
-shape (Triangle
-uid 1306,0
-ro 270
-va (VaSet
-vasetType 1
-fg "0,65535,0"
-)
-xt "84000,33625,84750,34375"
-)
-tg (CPTG
-uid 1307,0
-ps "CptPortTextPlaceStrategy"
-stg "RightVerticalLayoutStrategy"
-f (Text
-uid 1308,0
-va (VaSet
-font "Verdana,12,0"
-)
-xt "79800,33300,83000,34700"
-st "RxD"
-ju 2
-blo "83000,34500"
-)
-)
-thePort (LogicalPort
-decl (Decl
-n "RxD"
-t "std_uLogic"
-o 1
-suid 2061,0
-)
-)
-)
-*31 (CptPort
-uid 1309,0
-ps "OnEdgeStrategy"
-shape (Triangle
-uid 1310,0
-ro 270
-va (VaSet
-vasetType 1
-fg "0,65535,0"
-)
-xt "84000,35625,84750,36375"
-)
-tg (CPTG
-uid 1311,0
-ps "CptPortTextPlaceStrategy"
-stg "RightVerticalLayoutStrategy"
-f (Text
-uid 1312,0
-va (VaSet
-font "Verdana,12,0"
-)
-xt "79900,35300,83000,36700"
-st "TxD"
-ju 2
-blo "83000,36500"
-)
-)
-thePort (LogicalPort
-decl (Decl
-n "TxD"
-t "std_uLogic"
-o 2
-suid 2062,0
-)
-)
-)
-*32 (CptPort
-uid 1313,0
-ps "OnEdgeStrategy"
-shape (Triangle
-uid 1314,0
-ro 270
-va (VaSet
-vasetType 1
-fg "0,65535,0"
-)
-xt "67250,33625,68000,34375"
-)
-tg (CPTG
-uid 1315,0
-ps "CptPortTextPlaceStrategy"
-stg "VerticalLayoutStrategy"
-f (Text
-uid 1316,0
-va (VaSet
-font "Verdana,12,0"
-)
-xt "69000,33300,82700,34700"
-st "monitorTransaction"
-blo "69000,34500"
-)
-)
-thePort (LogicalPort
-m 1
-decl (Decl
-n "monitorTransaction"
-t "string"
-o 3
-suid 2071,0
-)
-)
-)
-*33 (CptPort
-uid 1317,0
-ps "OnEdgeStrategy"
-shape (Triangle
-uid 1318,0
-ro 180
-va (VaSet
-vasetType 1
-fg "0,65535,0"
-)
-xt "75625,29250,76375,30000"
-)
-tg (CPTG
-uid 1319,0
-ps "CptPortTextPlaceStrategy"
-stg "RightVerticalLayoutStrategy"
-f (Text
-uid 1320,0
-va (VaSet
-font "Verdana,12,0"
-)
-xt "71700,31000,78600,32400"
-st "baudRate"
-ju 2
-blo "78600,32200"
-)
-)
-thePort (LogicalPort
-decl (Decl
-n "baudRate"
-t "real"
-o 4
-suid 2075,0
-)
-)
-)
-]
-shape (Rectangle
-uid 1322,0
-va (VaSet
-vasetType 1
-fg "0,65535,0"
-lineColor "0,32896,0"
-lineWidth 2
-)
-xt "68000,30000,84000,40000"
-)
-oxt "47000,32000,63000,42000"
-ttg (MlTextGroup
-uid 1323,0
-ps "CenterOffsetStrategy"
-stg "VerticalLayoutStrategy"
-textVec [
-*34 (Text
-uid 1324,0
-va (VaSet
-)
-xt "68100,39700,75600,40900"
-st "RS232_test"
-blo "68100,40700"
-tm "BdLibraryNameMgr"
-)
-*35 (Text
-uid 1325,0
-va (VaSet
-)
-xt "68100,40700,78800,41900"
-st "uvmRs232Monitor"
-blo "68100,41700"
-tm "CptNameMgr"
-)
-*36 (Text
-uid 1326,0
-va (VaSet
-)
-xt "68100,41700,72000,42900"
-st "I_mon"
-blo "68100,42700"
-tm "InstanceNameMgr"
-)
-]
-)
-ga (GenericAssociation
-uid 1327,0
-ps "EdgeToEdgeStrategy"
-matrix (Matrix
-uid 1328,0
-text (MLText
-uid 1329,0
-va (VaSet
-font "Verdana,8,0"
-)
-xt "68000,44000,68000,44000"
-)
-header ""
-)
-elements [
-]
-)
-viewicon (ZoomableIcon
-uid 1330,0
-sl 0
-va (VaSet
-vasetType 1
-fg "49152,49152,49152"
-)
-xt "68250,38250,69750,39750"
-iconName "VhdlFileViewIcon.png"
-iconMaskName "VhdlFileViewIcon.msk"
-ftype 10
-)
-viewiconposition 0
-portVis (PortSigDisplay
-sTC 0
-sT 1
-)
-archFileType "UNKNOWN"
-)
-*37 (SaComponent
 uid 1486,0
 optionalChildren [
-*38 (CptPort
+*30 (CptPort
 uid 1474,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1371,7 +1152,7 @@ suid 2063,0
 )
 )
 )
-*39 (CptPort
+*31 (CptPort
 uid 1478,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1406,7 +1187,7 @@ suid 2071,0
 )
 )
 )
-*40 (CptPort
+*32 (CptPort
 uid 1482,0
 ps "OnEdgeStrategy"
 shape (Triangle
@@ -1459,7 +1240,7 @@ uid 1488,0
 ps "CenterOffsetStrategy"
 stg "VerticalLayoutStrategy"
 textVec [
-*41 (Text
+*33 (Text
 uid 1489,0
 va (VaSet
 )
@@ -1468,7 +1249,7 @@ st "RS232_test"
 blo "68100,22700"
 tm "BdLibraryNameMgr"
 )
-*42 (Text
+*34 (Text
 uid 1490,0
 va (VaSet
 )
@@ -1477,7 +1258,7 @@ st "uvmRs232Driver"
 blo "68100,23700"
 tm "CptNameMgr"
 )
-*43 (Text
+*35 (Text
 uid 1491,0
 va (VaSet
 )
@@ -1524,6 +1305,242 @@ sT 1
 )
 archFileType "UNKNOWN"
 )
+*36 (SaComponent
+uid 1604,0
+optionalChildren [
+*37 (CptPort
+uid 1588,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 1589,0
+ro 270
+va (VaSet
+vasetType 1
+fg "0,65535,0"
+)
+xt "84000,33625,84750,34375"
+)
+tg (CPTG
+uid 1590,0
+ps "CptPortTextPlaceStrategy"
+stg "RightVerticalLayoutStrategy"
+f (Text
+uid 1591,0
+va (VaSet
+font "Verdana,12,0"
+)
+xt "79800,33300,83000,34700"
+st "RxD"
+ju 2
+blo "83000,34500"
+)
+)
+thePort (LogicalPort
+decl (Decl
+n "RxD"
+t "std_uLogic"
+o 1
+suid 2061,0
+)
+)
+)
+*38 (CptPort
+uid 1592,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 1593,0
+ro 270
+va (VaSet
+vasetType 1
+fg "0,65535,0"
+)
+xt "84000,35625,84750,36375"
+)
+tg (CPTG
+uid 1594,0
+ps "CptPortTextPlaceStrategy"
+stg "RightVerticalLayoutStrategy"
+f (Text
+uid 1595,0
+va (VaSet
+font "Verdana,12,0"
+)
+xt "79900,35300,83000,36700"
+st "TxD"
+ju 2
+blo "83000,36500"
+)
+)
+thePort (LogicalPort
+decl (Decl
+n "TxD"
+t "std_uLogic"
+o 2
+suid 2062,0
+)
+)
+)
+*39 (CptPort
+uid 1596,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 1597,0
+ro 270
+va (VaSet
+vasetType 1
+fg "0,65535,0"
+)
+xt "67250,33625,68000,34375"
+)
+tg (CPTG
+uid 1598,0
+ps "CptPortTextPlaceStrategy"
+stg "VerticalLayoutStrategy"
+f (Text
+uid 1599,0
+va (VaSet
+font "Verdana,12,0"
+)
+xt "69000,33300,82700,34700"
+st "monitorTransaction"
+blo "69000,34500"
+)
+)
+thePort (LogicalPort
+m 1
+decl (Decl
+n "monitorTransaction"
+t "string"
+o 3
+suid 2071,0
+)
+)
+)
+*40 (CptPort
+uid 1600,0
+ps "OnEdgeStrategy"
+shape (Triangle
+uid 1601,0
+ro 180
+va (VaSet
+vasetType 1
+fg "0,65535,0"
+)
+xt "75625,29250,76375,30000"
+)
+tg (CPTG
+uid 1602,0
+ps "CptPortTextPlaceStrategy"
+stg "RightVerticalLayoutStrategy"
+f (Text
+uid 1603,0
+va (VaSet
+font "Verdana,12,0"
+)
+xt "72000,31000,78900,32400"
+st "baudRate"
+ju 2
+blo "78900,32200"
+)
+)
+thePort (LogicalPort
+decl (Decl
+n "baudRate"
+t "real"
+o 4
+suid 2075,0
+)
+)
+)
+]
+shape (Rectangle
+uid 1605,0
+va (VaSet
+vasetType 1
+fg "0,65535,0"
+lineColor "0,32896,0"
+lineWidth 2
+)
+xt "68000,30000,84000,40000"
+)
+oxt "47000,32000,63000,42000"
+ttg (MlTextGroup
+uid 1606,0
+ps "CenterOffsetStrategy"
+stg "VerticalLayoutStrategy"
+textVec [
+*41 (Text
+uid 1607,0
+va (VaSet
+)
+xt "68100,39700,75600,40900"
+st "RS232_test"
+blo "68100,40700"
+tm "BdLibraryNameMgr"
+)
+*42 (Text
+uid 1608,0
+va (VaSet
+)
+xt "68100,40900,78800,42100"
+st "uvmRs232Monitor"
+blo "68100,41900"
+tm "CptNameMgr"
+)
+*43 (Text
+uid 1609,0
+va (VaSet
+)
+xt "68100,42100,72000,43300"
+st "I_mon"
+blo "68100,43100"
+tm "InstanceNameMgr"
+)
+]
+)
+ga (GenericAssociation
+uid 1610,0
+ps "EdgeToEdgeStrategy"
+matrix (Matrix
+uid 1611,0
+text (MLText
+uid 1612,0
+va (VaSet
+font "Verdana,8,0"
+)
+xt "68000,44000,82900,45000"
+st "reportStart = \"uart\"    ( string )  
+"
+)
+header ""
+)
+elements [
+(GiElement
+name "reportStart"
+type "string"
+value "\"uart\""
+)
+]
+)
+viewicon (ZoomableIcon
+uid 1613,0
+sl 0
+va (VaSet
+vasetType 1
+fg "49152,49152,49152"
+)
+xt "68250,38250,69750,39750"
+iconName "VhdlFileViewIcon.png"
+iconMaskName "VhdlFileViewIcon.msk"
+ftype 10
+)
+viewiconposition 0
+portVis (PortSigDisplay
+sTC 0
+sT 1
+)
+archFileType "UNKNOWN"
+)
 *44 (Wire
 uid 457,0
 shape (OrthoPolyLine
@@ -1539,7 +1556,7 @@ pts [
 ]
 )
 start &20
-end &39
+end &31
 sat 32
 eat 32
 sty 1
@@ -1578,7 +1595,7 @@ pts [
 ]
 )
 start &25
-end &32
+end &39
 sat 32
 eat 32
 sty 1
@@ -1629,7 +1646,7 @@ pts [
 "92000,18000"
 ]
 )
-start &38
+start &30
 end &17
 sat 32
 eat 32
@@ -1667,7 +1684,7 @@ pts [
 ]
 )
 start &16
-end &31
+end &38
 sat 32
 eat 32
 st 0
@@ -1705,7 +1722,7 @@ pts [
 ]
 )
 start &47
-end &30
+end &37
 sat 32
 eat 32
 stc 0
@@ -1742,8 +1759,8 @@ pts [
 "76000,29250"
 ]
 )
-start &40
-end &33
+start &32
+end &40
 sat 32
 eat 32
 sty 1
@@ -1877,8 +1894,8 @@ tm "BdCompilerDirectivesTextMgr"
 ]
 associable 1
 )
-windowSize "-1928,-259,8,789"
-viewArea "-1618,-1618,142327,75917"
+windowSize "-1920,-251,1,797"
+viewArea "-1600,-1600,142305,76600"
 cachedDiagramExtent "0,0,109000,74000"
 pageSetupInfo (PageSetupInfo
 ptrCmd ""
@@ -1905,7 +1922,7 @@ exportStdPackageRefs 1
 )
 hasePageBreakOrigin 1
 pageBreakOrigin "0,0"
-lastUid 1564,0
+lastUid 1613,0
 defaultCommentText (CommentText
 shape (Rectangle
 layer 0
@@ -2889,25 +2906,25 @@ uid 3,0
 va (VaSet
 font "Verdana,8,1"
 )
-xt "0,8300,3400,9300"
+xt "0,8400,3400,9400"
 st "Ports:"
-blo "0,9100"
+blo "0,9200"
 )
 preUserLabel (Text
 uid 4,0
 va (VaSet
 font "Verdana,8,1"
 )
-xt "0,11000,4800,12000"
+xt "0,11400,4800,12400"
 st "Pre User:"
-blo "0,11800"
+blo "0,12200"
 )
 preUserText (MLText
 uid 5,0
 va (VaSet
 font "Verdana,8,0"
 )
-xt "2000,11900,23400,12900"
+xt "2000,12400,23400,13400"
 st "constant ahbTransactionLength: positive := 16;"
 tm "BdDeclarativeTextMgr"
 )
@@ -2916,9 +2933,9 @@ uid 6,0
 va (VaSet
 font "Verdana,8,1"
 )
-xt "0,12800,9000,13800"
+xt "0,13400,9000,14400"
 st "Diagram Signals:"
-blo "0,13600"
+blo "0,14200"
 )
 postUserLabel (Text
 uid 7,0
