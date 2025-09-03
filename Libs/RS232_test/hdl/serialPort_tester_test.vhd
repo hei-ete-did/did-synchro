@@ -169,7 +169,21 @@ BEGIN
     );
     write(output, separator);
     wait for 100 * clockPeriod;
-    
+
+    -- Send a bad start bit to see if the system reacts
+    testInfo <= pad("Send bad start bit", testInfo'length);
+    subTestInfo <= pad("Send bad start bit", subTestInfo'length);
+    write(output,
+      "[TB] Send bad start bit" & lf &
+      "    at time " & integer'image(now/1 ns) & " ns" &
+      lf & lf
+    );
+    write(output, separator);
+    rxd <= '0';
+    wait for 10 * clockPeriod;
+    rxd <= '1';
+    wait for 12 * c_BAUD_PERIOD;
+
     -- End of simulation
     wait for 10 * clockPeriod;
     testInfo <= pad("Simulation End", testInfo'length);

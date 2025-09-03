@@ -13,7 +13,7 @@
 --
 -- Outputs :
 --   o_byte : Recomposed data
---   o_byte_received : Indicates that a byte has been received
+--   o_byte_received : Indicates that a byte has been received. Is emitted even if an error occured - always simultaneously check for any error.
 --   o_parity_error : Indicates that a parity error has occurred
 --   o_frame_error : Not implemented yet. Always '0'.
 --   o_illegalstate_error : Indicates that an illegal state has occurred in the FSM
@@ -43,6 +43,7 @@
 ------------------------------------------------
 -- Revision list
 -- Version Author   Date           Changes
+-- 2.1     AMA      03.09.2025     Added start bit multisampling - avoiding bad start bits
 -- 2.0     AMA/BOY  16.04.2025     Added parity, stop bits, multi-sampling, bit order, idle state. Added frame / parity / illegal state error signals. Added Rx enable (RS485 / RS422).
 -- 1.0              04.04.2022     First version
 -- 
@@ -57,7 +58,7 @@ library IEEE;
 ARCHITECTURE RTL OF serialPortReceiver IS
 
   -- FSM
-  type state_t is (ST_IDLE, ST_START_BIT, ST_SAMPLE_1, ST_SAMPLE_2, ST_SAMPLE_3, ST_NEXT_BIT, ST_INDICATE_REC_COMPLETE, ST_WAIT_STOP, ST_WAIT_STOP_MORE);
+  type state_t is (ST_IDLE, ST_START_BIT_1, ST_START_BIT_2, ST_START_BIT_3, ST_START_WAIT_END_STARTBIT, ST_SAMPLE_1, ST_SAMPLE_2, ST_SAMPLE_3, ST_NEXT_BIT, ST_INDICATE_REC_COMPLETE, ST_WAIT_STOP, ST_WAIT_STOP_MORE);
   signal lvec_state: state_t;
   -- Clock divider
   signal lvec_divider_counter: unsigned(requiredBitNb(g_BAUD_RATE_DIVIDER)-1 downto 0);
@@ -160,11 +161,40 @@ BEGIN
 
           -- Start detected
           if i_rxd_en = '1' and i_rxd = not g_IDLE_STATE then
-            lvec_state <= ST_START_BIT;
+            lvec_state <= ST_START_BIT_1;
           end if;
 
-        when ST_START_BIT =>
-          -- Start bit detected
+        when ST_START_BIT_1 =>
+          -- Start bit - sampling 1
+          if lsig_divider_sampling_of = '1' then
+            if i_rxd = not g_IDLE_STATE then
+              lvec_state <= ST_START_BIT_2;
+            else
+              lvec_state <= ST_IDLE;
+            end if;
+          end if;
+
+        when ST_START_BIT_2 =>
+          -- Start bit - sampling 2
+          if lsig_divider_sampling_of = '1' then
+            if i_rxd = not g_IDLE_STATE then
+              lvec_state <= ST_START_BIT_3;
+            else
+              lvec_state <= ST_IDLE;
+            end if;
+          end if;
+
+        when ST_START_BIT_3 =>
+          -- Start bit - sampling 3
+          if lsig_divider_sampling_of = '1' then
+            if i_rxd = not g_IDLE_STATE then
+              lvec_state <= ST_START_WAIT_END_STARTBIT;
+            else
+              lvec_state <= ST_IDLE;
+            end if;
+          end if;
+
+        when ST_START_WAIT_END_STARTBIT =>
           if lsig_divider_of = '1' then
             lvec_state <= ST_SAMPLE_1;
           end if;
