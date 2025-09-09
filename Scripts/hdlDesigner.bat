@@ -60,6 +60,7 @@ if %REQUIRE_RADIANT% == 1 (
   set synthesis_subdirectory="Board\radiant"
 )
 set concat_directory="%design_directory:"=%\Board\concat"
+set has_sim_switch=0
 
 ::------------------------------------------------------------------------------
 :: Parse command line options
@@ -70,6 +71,7 @@ set usage2="                        [-n designName] [-d designDirectory]"
 set usage3="                        [-p prefsDirectory] [-u userPrefsDirectory] [-t teamPrefsDirectory]"
 set usage4="                        [-s scratchDirectory] [-c concatDirectory]"
 set usage5="                        [-y synthesisDirectory] [-m library_matchings]"
+set usage6="                        [-sim simulationDirectory]"
 
 echo Search Commandline Parameters
 :parseloop
@@ -128,6 +130,12 @@ if not "%1"=="" (
         echo %INDENT:"=%library_matchings=%library_matchings:"=%
         shift & shift
     )
+    if "%1"=="-sim" (
+        set simulation_directory=%2
+        set has_sim_switch=1
+        echo %INDENT:"=%simulation_directory=%simulation_directory:"=%
+        shift & shift
+    )
     goto :parseloop
 )
 echo.
@@ -137,7 +145,12 @@ set prefs_directory="!design_directory:"=!\Prefs"
 set user_prefs_directory="!prefs_directory:"=!\hds_user"
 set team_prefs_directory="!prefs_directory:"=!\hds_team"
 set library_matchings=!prefs_directory:"=!\!library_matchings:"=!
-set simulation_directory="!design_directory:"=!\Simulation"
+:: Set simulation_directory in both cases, but append "\Simulation" only if "-sim" switch is not used
+if !has_sim_switch! == 0 (
+  set simulation_directory="!design_directory:"=!\Simulation"
+) else (
+  set simulation_directory="!simulation_directory!"
+)
 set concat_directory="!design_directory:"=!\Board\concat"
 
 :: Getting realpath
@@ -321,4 +334,5 @@ echo -- Launching program
   echo %usage3:"=%
   echo %usage4:"=%
   echo %usage5:"=%
+  echo %usage6:"=%
   echo.&pause&goto:eof
